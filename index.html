@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الريان - المتجر العراقي المتكامل</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.85); -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .drawer { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+        .drawer.open { transform: translateX(0); }
+        .modal { display: none; opacity: 0; transition: opacity 0.3s ease; }
+        .modal.open { display: flex; opacity: 1; }
+        .product-card:hover img { transform: scale(1.08); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .btn-whatsapp { background: #25D366; transition: all 0.3s; }
+        .btn-whatsapp:hover { background: #128C7E; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade { animation: fadeIn 0.5s ease forwards; }
+    </style>
+</head>
+<body class="bg-[#F8F9FA] text-[#1A1A1A]">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-4">
+                    <h1 class="text-2xl font-black tracking-tighter text-black cursor-pointer" onclick="showSection('shop')">الريان</h1>
+                </div>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <button onclick="showSection('shop')" class="text-sm font-bold hover:text-blue-600 transition">المتجر</button>
+                    <button onclick="showSection('tracking')" class="text-sm font-bold hover:text-blue-600 transition">تتبع الطلب</button>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <div class="relative hidden sm:block">
+                        <input type="text" id="search-input" oninput="handleSearch()" placeholder="ابحث عن منتج..." class="pr-10 pl-4 py-2 bg-gray-100 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-black/5 w-40 lg:w-60">
+                        <svg class="absolute right-3 top-2.5 text-gray-400" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <button onclick="toggleCart()" class="relative p-2 hover:bg-gray-100 rounded-full transition">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <span id="cart-count" class="absolute top-0 right-0 bg-black text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full hidden">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div id="main-container">
+        
+        <!-- SHOP SECTION -->
+        <section id="shop-section">
+            <!-- Hero -->
+            <header class="relative h-[50vh] flex items-center justify-center bg-black overflow-hidden">
+                <img src="img/photo-1441986300917-64674bd600d8.avif" class="absolute inset-0 w-full h-full object-cover opacity-50" alt="Hero">
+                <div class="relative z-10 text-center text-white px-4">
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-4 animate-fade">الريان: فخامة التسوق</h2>
+                    <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8 animate-fade" style="animation-delay: 0.1s">أفضل الأجهزة الكهربائية والأثاث المنزلي في العراق بضمان حقيقي وتوصيل سريع.</p>
+                    <button onclick="document.getElementById('products-anchor').scrollIntoView()" class="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition animate-fade" style="animation-delay: 0.2s">ابدأ التسوق</button>
+                </div>
+            </header>
+
+            <!-- Features -->
+            <div class="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 bg-white rounded-3xl border border-gray-100 text-center shadow-sm">
+                    <div class="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="3"></path></svg>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">ضمان حقيقي</h4>
+                    <p class="text-sm text-gray-400">كافة منتجاتنا تخضع لضمان استبدال وصيانة حقيقي.</p>
+                </div>
+                <div class="p-8 bg-white rounded-3xl border border-gray-100 text-center shadow-sm">
+                    <div class="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14v14m0-14L4 7m8 4L4 7m0 0v10l8 4" stroke-width="2"></path></svg>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">توصيل سريع</h4>
+                    <p class="text-sm text-gray-400">نصلك أينما كنت في كافة محافظات العراق خلال 48 ساعة.</p>
+                </div>
+                <div class="p-8 bg-white rounded-3xl border border-gray-100 text-center shadow-sm">
+                    <div class="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" stroke-width="2"></path></svg>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">دعم مباشر</h4>
+                    <p class="text-sm text-gray-400">فريقنا جاهز للرد على استفساراتكم عبر واتساب على مدار الساعة.</p>
+                </div>
+            </div>
+
+            <div id="products-anchor"></div>
+
+            <!-- Categories & Products -->
+            <main class="max-w-7xl mx-auto px-4 py-12">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+                    <div>
+                        <h3 class="text-3xl font-extrabold mb-2">مجموعتنا المختارة</h3>
+                        <p class="text-gray-400" id="product-count-text">نعرض كافة المنتجات</p>
+                    </div>
+                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2 w-full md:w-auto" id="category-list">
+                        <!-- Categories injected here -->
+                    </div>
+                </div>
+
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Products injected here -->
+                </div>
+            </main>
+
+            <!-- Brand Story -->
+            <section class="max-w-7xl mx-auto px-4 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="rounded-[3rem] overflow-hidden shadow-2xl aspect-square relative">
+                    <img src="img/images (1).jpg" class="w-full h-full object-cover" alt="Story">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-12">
+                        <p class="text-white italic text-lg">"الجودة هي المعيار الوحيد الذي لا نتنازل عنه."</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-black mb-6">قصة الريان</h3>
+                    <p class="text-gray-500 text-lg leading-relaxed mb-8">بدأنا كمتجر عائلي صغير، واليوم نحن فخورون بخدمة آلاف العائلات في العراق. هدفنا هو توفير أفضل المنتجات العالمية بأسعار تنافسية، مع ضمان تجربة تسوق مريحة تبدأ من هاتفك وتنتهي عند باب منزلك.</p>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <h5 class="text-3xl font-black mb-1">15k+</h5>
+                            <p class="text-xs uppercase tracking-widest text-gray-400">عميل راضٍ</p>
+                        </div>
+                        <div>
+                            <h5 class="text-3xl font-black mb-1">100%</h5>
+                            <p class="text-xs uppercase tracking-widest text-gray-400">ثقة وأمان</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- TRACKING SECTION -->
+        <section id="tracking-section" class="hidden max-w-4xl mx-auto px-4 py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-black mb-4">تتبع طلبك</h2>
+                <p class="text-gray-400">أدخل رقم الطلب الذي استلمته عند الشراء.</p>
+            </div>
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-gray-100">
+                <div class="flex flex-col sm:flex-row gap-3 mb-8">
+                    <input type="text" id="track-input" placeholder="مثال: ORD-ABC123XYZ" class="flex-1 px-6 py-4 bg-gray-50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-black/5 uppercase font-bold">
+                    <button onclick="handleTrack()" class="px-10 py-4 bg-black text-white font-bold rounded-2xl hover:bg-gray-800 transition">تتبع الآن</button>
+                </div>
+                <div id="track-result" class="hidden space-y-8">
+                    <!-- Tracking result injected here -->
+                </div>
+                <div id="track-error" class="hidden text-center py-10 text-red-500 font-bold">
+                    لم يتم العثور على هذا الرقم. يرجى التأكد من صحته.
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-20 mt-20">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <h1 class="text-3xl font-black mb-6 uppercase">الريان</h1>
+                <p class="text-gray-400 max-w-sm leading-relaxed">وجهتك الأولى في العراق للحصول على أفضل الأجهزة المنزلية والسلع الاستهلاكية بأعلى جودة وأفضل سعر.</p>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6">روابط هامة</h5>
+                <ul class="space-y-3 text-gray-400 text-sm">
+                    <li><button onclick="showSection('shop')" class="hover:text-black">المتجر</button></li>
+                    <li><button onclick="showSection('tracking')" class="hover:text-black">تتبع الطلب</button></li>
+                    <li><a href="#" class="hover:text-black">سياسة الخصوصية</a></li>
+                    <li><a href="#" class="hover:text-black">الشروط والأحكام</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6">تواصل معنا</h5>
+                <p class="text-gray-400 text-sm mb-4">الرياض السعودي</p>
+                <div class="flex gap-4">
+                    <button onclick="openConcierge()" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.212l-.545 2.034 2.12-.545c.912.512 1.883.867 3.168.867 3.181 0 5.767-2.586 5.767-5.766 0-3.181-2.587-5.767-5.767-5.767zm3.39 8.218c-.146.413-.856.755-1.188.8-.293.041-.661.074-1.089-.074-.271-.094-.611-.21-.955-.352-.667-.274-1.21-.593-1.814-1.131-.604-.539-1.03-1.191-1.256-1.531-.227-.341-.435-.772-.42-.993.011-.165.127-.32.243-.435.12-.117.247-.208.337-.285.11-.094.146-.159.217-.26.071-.101.036-.19-.018-.3-.054-.107-.467-1.124-.64-1.542-.168-.407-.337-.351-.467-.357-.117-.006-.253-.006-.39-.006-.136 0-.357.051-.545.253-.188.201-.714.698-.714 1.701 0 1.003.73 1.973.83 2.109.101.136 1.435 2.191 3.476 3.07.486.209.865.334 1.159.428.488.155.934.133 1.286.081.393-.058 1.21-.494 1.382-.97.172-.476.172-.885.121-.97-.051-.085-.188-.136-.396-.24z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 pt-12 mt-12 border-t border-gray-50 text-center text-[10px] text-gray-300 uppercase tracking-widest font-bold">
+            © 2026 متجر الريان. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden"></div>
+    <div id="cart-drawer" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white z-[70] drawer flex flex-col shadow-2xl">
+        <div class="p-6 border-b flex justify-between items-center">
+            <h3 class="text-xl font-black flex items-center gap-2">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                سلة التسوق
+            </h3>
+            <button onclick="toggleCart()" class="p-2 hover:bg-gray-100 rounded-full transition">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Cart items injected here -->
+        </div>
+        <div id="cart-footer" class="p-6 border-t bg-gray-50 hidden">
+            <div class="flex justify-between text-xl font-black mb-6">
+                <span>الإجمالي:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button onclick="openConcierge()" class="w-full btn-whatsapp text-white py-5 rounded-2xl font-black flex items-center justify-center gap-3 shadow-xl">
+                إتمام الطلب عبر واتساب
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] modal items-center justify-center p-4">
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row relative">
+            <button onclick="closeProductModal()" class="absolute right-6 top-6 z-10 p-2 bg-white/80 backdrop-blur-md rounded-full shadow-lg hover:bg-white transition">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="md:w-1/2 h-64 md:h-auto overflow-hidden">
+                <img id="modal-image" src="" class="w-full h-full object-cover" alt="Product">
+            </div>
+            <div class="md:w-1/2 p-8 md:p-12 overflow-y-auto">
+                <div class="mb-8">
+                    <span id="modal-category" class="text-[10px] font-black uppercase tracking-widest text-gray-400 bg-gray-100 px-3 py-1 rounded-full mb-4 inline-block"></span>
+                    <h2 id="modal-name" class="text-3xl md:text-4xl font-black mb-2"></h2>
+                    <p id="modal-price" class="text-2xl font-black text-blue-600"></p>
+                </div>
+                <p id="modal-description" class="text-gray-500 leading-relaxed mb-8"></p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button id="modal-add-btn" class="flex-1 bg-black text-white py-4 rounded-2xl font-black hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                        إضافة للسلة
+                    </button>
+                    <button id="modal-buy-btn" class="flex-1 btn-whatsapp text-white py-4 rounded-2xl font-black flex items-center justify-center gap-2">
+                        شراء سريع
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Concierge Modal -->
+    <div id="concierge-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] modal items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-[2.5rem] shadow-2xl overflow-hidden">
+            <div class="p-8 bg-black text-white text-center relative">
+                <button onclick="closeConcierge()" class="absolute right-6 top-6 text-white/40 hover:text-white">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+                </div>
+                <h3 class="text-xl font-black mb-1">موظف المبيعات</h3>
+                <p class="text-white/50 text-sm">اختر الموظف لإتمام طلبك</p>
+            </div>
+            <div class="p-4 space-y-2" id="agent-list">
+                <!-- Agents injected here -->
+            </div>
+            <div class="p-4 bg-gray-50 text-center text-[10px] text-gray-300 font-bold uppercase tracking-widest">
+                متواجدون دائماً لخدمتكم
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <button onclick="openConcierge()" class="fixed bottom-6 right-6 z-[55] btn-whatsapp text-white p-5 rounded-full shadow-2xl hover:scale-110 transition active:scale-95">
+        <svg width="38" height="38" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.212l-.545 2.034 2.12-.545c.912.512 1.883.867 3.168.867 3.181 0 5.767-2.586 5.767-5.766 0-3.181-2.587-5.767-5.767-5.767zm3.39 8.218c-.146.413-.856.755-1.188.8-.293.041-.661.074-1.089-.074-.271-.094-.611-.21-.955-.352-.667-.274-1.21-.593-1.814-1.131-.604-.539-1.03-1.191-1.256-1.531-.227-.341-.435-.772-.42-.993.011-.165.127-.32.243-.435.12-.117.247-.208.337-.285.11-.094.146-.159.217-.26.071-.101.036-.19-.018-.3-.054-.107-.467-1.124-.64-1.542-.168-.407-.337-.351-.467-.357-.117-.006-.253-.006-.39-.006-.136 0-.357.051-.545.253-.188.201-.714.698-.714 1.701 0 1.003.73 1.973.83 2.109.101.136 1.435 2.191 3.476 3.07.486.209.865.334 1.159.428.488.155.934.133 1.286.081.393-.058 1.21-.494 1.382-.97.172-.476.172-.885.121-.97-.051-.085-.188-.136-.396-.24z"></path></svg>
+    </button>
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- Data ---
+        const PRODUCTS = [
+            {id: '1', name: 'خلاط كهربائي متعدد', price: 45, category: 'أدوات منزلية', image: '5.webp', description: 'خلاط قوي لتحضير العصائر والشوربات، شفرات حادة من الستانلس ستيل.' },
+            { id: '10', name:' طقم أنتريه مودرن 3قطع-أبيضRA-LR35 - ريترو للأثاث', price: 280, category: 'أثاث', image: '10.webp', description: 'طقم أنتريه متكامل يتكوّن من كنبتين وكرسي بتصميم عصري يجمع بين الراحة والأناقة. يوفر مساحة جلوس واسعة ومريحة للاستخدام اليومي أو الاستقبال، مع خامات متينة تضمن ثباتًا وجودة تدوم طويلًا. اللون الأبيض يمنح الغرفة مظهرًا مرتبًا وهادئًا، ويسهل تنسيقه مع مختلف أنماط الديكور ليكون إضافة عملية وجذابة لأي مساحة.' },            
+            { id: '2', name: 'ثلاجة سامسونج 500 لتر', price: 220, category: 'أجهزة كهربائية', image: '2.webp', description: 'ثلاجة سامسونج متطورة مع تقنية التبريد المزدوج، سعة كبيرة وتصميم عصري يناسب كل مطبخ.' },
+            { id: '3', name: 'غسالة ملابس أوتوماتيك', price: 150, category: 'أجهزة كهربائية', image: '3.webp', description: 'غسالة ملابس أوتوماتيك بالكامل، برامج غسيل متعددة، هادئة وموفرة للمياه والكهرباء.' },
+            { id: '4', name: 'طقم قدور جرانيت 10 قطع', price: 75, category: 'أدوات منزلية', image: '4.webp', description: 'طقم قدور طبخ عالي الجودة، غير لاصق، سهل التنظيف، وتوزيع حراري متساوي.' },
+            { id: '8', name: 'طقم أريكة مودرن', price: 190, category: 'أثاث', image: '8.webp', description: 'أريكة مريحة بتصميم عصري، قماش عالي الجودة وألوان تناسب جميع الأذواق.' },
+            { id: '6', name: 'شاشة ذكية 55 بوصة 4K', price: 150, category: 'إلكترونيات', image: '6.webp', description: 'تلفزيون ذكي بدقة 4K، يدعم نتفليكس ويوتيوب، ألوان زاهية وتجربة مشاهدة غامرة.' },
+            { id: '7', name: 'مجموعة منظفات منزلية', price: 15, category: 'سلع استهلاكية', image: '7.jpg', description: 'مجموعة شاملة من المنظفات عالية الجودة للمنزل، فعالة وآمنة.' },
+            { id: '9', name: 'سماعة رأس هيدفون cardoO', price: 50, category: 'إلكترونيات', image: '9.webp', description: 'اشعر بكل نبضة مع محركات صوت 40 مم تقدم صوتاً عميقاً وغنياً مع تريبل نقي.انعزل عن العالم أو تواصل معه بفضل ميزة إلغاء الضوضاء النشط الهجين حتى -35 ديسيبل ووضع الشفافية.تحكّم كامل بين يديك من خلال تطبيق cardoO لإدارة الإعدادات والأنماط وتحديثات النظام بكل سهولة.تحدث بثقة تامة بفضل تقنية الـ 4 ميكروفونات التي تضمن مكالمات نقية وواضحة في جميع الظروف.' },
+            { id: '11', name:' أنتريه مودرن 3 قطع-أوف وايت×برتقالي RA-LR24', price: 230, category: 'أثاث', image: '11.jpg', description: 'أنتريه مودرن 3 قطع يجمع بين الأناقة والراحة بتصميم عصري مميز. يأتي بألوان أوف وايت × برتقالي لتضيف لمسة حيوية ودافئة لغرفة المعيشة، مع خامات عالية الجودة توفر المتانة وطول العمر، وتصميم عملي يضمن جلوسًا مريحًا وتجربة فاخرة للمكانالمنتج متاح: عند الطلب' },
+            {id: '12', name: 'مكيف هواء إل جي 2 طن', price: 150, category: 'أجهزة كهربائية', image: '1.webp', description: 'مكيف هواء سبليت إل جي بقوة 2 طن، موفر للطاقة مع تقنية الإنفرتر، مثالي للأجواء الحارة في العراق.' },
+
+            ];
+
+        const AGENTS = [
+            { id: '1', name: 'سارة - مبيعات', role: 'خبير الأجهزة', number: '+201068300432', avatar: 'https://i.pravatar.cc/100?u=1', message: 'أهلاً بك! أنا أحمد، متخصص في الأجهزة الكهربائية.' },
+            { id: '2', name: 'عبدالوهاب - دعم', role: 'خدمة العملاء', number: '+201068300432', avatar: 'https://i.pravatar.cc/100?u=2', message: 'مرحباً! أنا سارة، هنا لمساعدتك في أي استفسار.' }
+        ];
+
+        // --- State ---
+        let cart = [];
+        let selectedCategory = 'الكل';
+        let searchQuery = '';
+        let myOrders = JSON.parse(localStorage.getItem('alrayyan_orders') || '[]');
+
+        // --- Core Functions ---
+        function showSection(section) {
+            document.getElementById('shop-section').classList.toggle('hidden', section !== 'shop');
+            document.getElementById('tracking-section').classList.toggle('hidden', section !== 'tracking');
+            window.scrollTo(0, 0);
+        }
+
+        function renderCategories() {
+            const cats = ['الكل', ...new Set(PRODUCTS.map(p => p.category))];
+            const container = document.getElementById('category-list');
+            container.innerHTML = cats.map(cat => `
+                <button onclick="setCategory('${cat}')" class="px-6 py-2 rounded-full text-xs font-black whitespace-nowrap transition ${selectedCategory === cat ? 'bg-black text-white shadow-lg' : 'bg-white border border-gray-100 text-gray-400 hover:bg-gray-50'}">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('product-grid');
+            const filtered = PRODUCTS.filter(p => {
+                const matchesCat = selectedCategory === 'الكل' || p.category === selectedCategory;
+                const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCat && matchesSearch;
+            });
+
+            document.getElementById('product-count-text').innerText = `نعرض ${filtered.length} منتج`;
+
+            container.innerHTML = filtered.map(p => `
+                <div class="bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 product-card group animate-fade">
+                    <div class="relative aspect-[4/5] overflow-hidden cursor-pointer" onclick="openProductModal('${p.id}')">
+                        <img src="img/${p.image}" class="w-full h-full object-cover transition duration-700" alt="${p.name}">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="event.stopPropagation(); addToCart('${p.id}')" class="bg-white text-black px-8 py-3 rounded-full font-black transform translate-y-4 group-hover:translate-y-0 transition">إضافة للسلة</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-black text-lg">${p.name}</h4>
+                            <span class="font-black text-blue-600">$${p.price}</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-4 line-clamp-2">${p.description}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-gray-300 bg-gray-50 px-2 py-1 rounded">${p.category}</span>
+                            <button onclick="addToCart('${p.id}')" class="p-2 bg-black text-white rounded-full hover:scale-110 transition">
+                                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            selectedCategory = cat;
+            renderCategories();
+            renderProducts();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('search-input').value;
+            renderProducts();
+        }
+
+        // --- Cart Logic ---
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('open');
+            document.getElementById('cart-overlay').classList.toggle('hidden');
+        }
+
+        function addToCart(id) {
+            const product = PRODUCTS.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartUI();
+            if (!document.getElementById('cart-drawer').classList.contains('open')) toggleCart();
+        }
+
+        function updateQuantity(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity = Math.max(1, item.quantity + delta);
+                updateCartUI();
+            }
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(i => i.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, i) => sum + i.quantity, 0);
+            const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+            
+            const countEl = document.getElementById('cart-count');
+            countEl.innerText = count;
+            countEl.classList.toggle('hidden', count === 0);
+
+            document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('cart-footer').classList.toggle('hidden', cart.length === 0);
+
+            const container = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center py-20">
+                        <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4 text-gray-200">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        </div>
+                        <p class="text-gray-400 font-bold">السلة فارغة</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex gap-4 animate-fade">
+                        <img src="img/${item.image}" class="w-20 h-24 rounded-2xl object-cover bg-gray-50">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-black text-sm truncate w-32">${item.name}</h4>
+                                <button onclick="removeFromCart('${item.id}')" class="text-gray-300 hover:text-red-500 transition">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                </button>
+                            </div>
+                            <p class="text-xs font-black text-blue-600 mb-3">$${item.price}</p>
+                            <div class="flex items-center gap-3">
+                                <div class="flex items-center border border-gray-100 rounded-full px-2 py-1 bg-white">
+                                    <button onclick="updateQuantity('${item.id}', -1)" class="p-1 hover:bg-gray-50 rounded-full"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M20 12H4"></path></svg></button>
+                                    <span class="w-8 text-center text-xs font-black">${item.quantity}</span>
+                                    <button onclick="updateQuantity('${item.id}', 1)" class="p-1 hover:bg-gray-50 rounded-full"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"></path></svg></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // --- Modals Logic ---
+        function openProductModal(id) {
+            const p = PRODUCTS.find(x => x.id === id);
+            document.getElementById('modal-image').src ='img/' + p.image;
+            document.getElementById('modal-name').innerText = p.name;
+            document.getElementById('modal-category').innerText = p.category;
+            document.getElementById('modal-price').innerText = `$${p.price}`;
+            document.getElementById('modal-description').innerText = p.description;
+            
+            document.getElementById('modal-add-btn').onclick = () => { addToCart(p.id); closeProductModal(); };
+            document.getElementById('modal-buy-btn').onclick = () => { addToCart(p.id); openConcierge(); closeProductModal(); };
+            
+            document.getElementById('product-modal').classList.add('open');
+        }
+
+        function closeProductModal() { document.getElementById('product-modal').classList.remove('open'); }
+
+        function openConcierge() {
+            if (cart.length === 0) return alert('السلة فارغة!');
+            document.getElementById('concierge-modal').classList.add('open');
+            const container = document.getElementById('agent-list');
+            container.innerHTML = AGENTS.map(agent => `
+                <button onclick="handleCheckout('${agent.number}')" class="w-full flex items-center gap-4 p-4 rounded-3xl hover:bg-gray-50 transition border border-transparent hover:border-gray-100 text-right group">
+                    <img src="${agent.avatar}" class="w-14 h-14 rounded-full object-cover border-2 border-gray-100 group-hover:border-black transition">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-0.5">
+                            <h4 class="font-black text-sm">${agent.name}</h4>
+                            <span class="text-[8px] font-black uppercase tracking-widest text-gray-300 bg-gray-50 px-2 py-0.5 rounded">${agent.role}</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 line-clamp-1">${agent.message}</p>
+                    </div>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="rotate-180 text-gray-200 group-hover:text-black transition"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            `).join('');
+        }
+
+        function closeConcierge() { document.getElementById('concierge-modal').classList.remove('open'); }
+
+        function handleCheckout(number) {
+            const orderId = 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+            
+            const newOrder = {
+                id: orderId,
+                items: [...cart],
+                total: total,
+                status: 'Processing',
+                date: new Date().toISOString()
+            };
+
+            myOrders.unshift(newOrder);
+            localStorage.setItem('alrayyan_orders', JSON.stringify(myOrders));
+
+            const itemsText = cart.map(i => `• ${i.name} (x${i.quantity})`).join('\n');
+            const message = `*🛍️ طلب جديد من متجر الريان*\nرقم الطلب: ${orderId}\n\n${itemsText}\n\n*الإجمالي: $${total.toFixed(2)}*\n\n_يرجى تأكيد الطلب وتفاصيل التوصيل._`;
+            
+            window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank');
+            
+            cart = [];
+            updateCartUI();
+            closeConcierge();
+            if (document.getElementById('cart-drawer').classList.contains('open')) toggleCart();
+            
+            alert('تم إرسال طلبك بنجاح! رقم الطلب هو: ' + orderId);
+        }
+
+        // --- Tracking Logic ---
+        function handleTrack() {
+            const input = document.getElementById('track-input').value.trim().toUpperCase();
+            const resultDiv = document.getElementById('track-result');
+            const errorDiv = document.getElementById('track-error');
+            
+            resultDiv.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+
+            const order = myOrders.find(o => o.id === input);
+            if (order) {
+                resultDiv.classList.remove('hidden');
+                resultDiv.innerHTML = `
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b pb-6">
+                        <div>
+                            <p class="text-[10px] font-black text-gray-300 uppercase tracking-widest mb-1">رقم الطلب</p>
+                            <h4 class="text-2xl font-black">${order.id}</h4>
+                        </div>
+                        <div class="bg-black text-white px-6 py-2 rounded-full font-black text-sm">
+                            ${order.status === 'Processing' ? 'قيد المعالجة' : 'تم الشحن'}
+                        </div>
+                    </div>
+                    <div class="relative flex justify-between py-8">
+                        <div class="absolute top-12 left-0 right-0 h-0.5 bg-gray-100 z-0"></div>
+                        <div class="relative z-10 flex flex-col items-center">
+                            <div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center mb-2"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14v14m0-14L4 7m8 4L4 7m0 0v10l8 4"></path></svg></div>
+                            <span class="text-[10px] font-black uppercase">قيد المعالجة</span>
+                        </div>
+                        <div class="relative z-10 flex flex-col items-center opacity-30">
+                            <div class="w-10 h-10 bg-white border-2 border-gray-100 text-gray-300 rounded-full flex items-center justify-center mb-2"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1m-4 0a1 1 0 001 1h1m-4 0H5"></path></svg></div>
+                            <span class="text-[10px] font-black uppercase">تم الشحن</span>
+                        </div>
+                        <div class="relative z-10 flex flex-col items-center opacity-30">
+                            <div class="w-10 h-10 bg-white border-2 border-gray-100 text-gray-300 rounded-full flex items-center justify-center mb-2"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div>
+                            <span class="text-[10px] font-black uppercase">تم التوصيل</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h5 class="text-xs font-black text-gray-300 uppercase tracking-widest">المنتجات</h5>
+                        ${order.items.map(item => `
+                            <div class="flex items-center gap-4">
+                                <img src="img/${item.image}" class="w-12 h-12 rounded-xl object-cover">
+                                <div class="flex-1">
+                                    <p class="font-black text-sm">${item.name}</p>
+                                    <p class="text-[10px] text-gray-400">الكمية: ${item.quantity}</p>
+                                </div>
+                                <p class="font-black text-sm">$${(item.price * item.quantity).toFixed(2)}</p>
+                            </div>
+                        `).join('')}
+                        <div class="pt-4 border-t flex justify-between items-center">
+                            <span class="font-black">المبلغ الإجمالي</span>
+                            <span class="text-2xl font-black text-blue-600">$${order.total.toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                errorDiv.classList.remove('hidden');
+            }
+        }
+
+        // --- Init ---
+        renderCategories();
+        renderProducts();
+        updateCartUI();
+    </script>
+</body>
+</html>
