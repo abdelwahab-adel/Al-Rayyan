@@ -1,71 +1,20 @@
-🚀 Case Study | متجر الريان – تحويل تجربة الشراء إلى محادثة ذكية
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-في السوق الحالي، أغلب المتاجر الإلكترونية بتعاني من مشاكل واضحة:
-❌ خطوات شراء معقدة
-❌ معدل ترك سلة مرتفع
-❌ تجربة مستخدم تقليدية
+# Run and deploy your AI Studio app
 
-👉 هنا كانت الفكرة:
-ماذا لو كانت عملية الشراء نفسها مجرد محادثة؟
+This contains everything you need to run your app locally.
 
-💡 لذلك قمت بتطوير متجر الريان
-مش مجرد موقع E-commerce…
-بل تجربة رقمية متكاملة مصممة لزيادة التحويل (Conversion) وتبسيط الشراء لأقصى حد
+View your app in AI Studio: https://ai.studio/apps/6cc268c6-5854-43fa-85e9-7c707c2ef589
 
-🔹 ⚡ تجربة مستخدم احترافية وسريعة (UI/UX)
-واجهة عصرية داكنة + Responsive Design
-تخلي المستخدم يوصل للمنتج ويتخذ قرار الشراء في ثواني
+## Run Locally
 
-🔹 🛒 نظام متجر متكامل
+**Prerequisites:**  Node.js
 
-عرض منتجات ديناميكي
-تصنيفات ذكية + فلترة
-بحث فوري
-Product Modal احترافي لعرض التفاصيل
 
-🔹 🧠 سلة تسوق محسّنة للتحويل
-تقليل الاحتكاك لأقصى درجة:
-✔ إضافة / حذف / تعديل الكميات بسهولة
-✔ حساب تلقائي للإجمالي
-✔ تجربة نظيفة بدون تعقيد أو تشتيت
-
-🔹 📲 Checkout مختلف (WhatsApp Commerce)
-بدل الفورمات الطويلة التقليدية:
-✔ إنشاء Order ID تلقائي
-✔ تجهيز الطلب بالكامل (Products + Total)
-✔ إرسال مباشر عبر WhatsApp
-
-➡️ النتيجة:
-تجربة أسرع + تفاعل أعلى + معدل تحويل أفضل 🚀
-
-🔹 📦 نظام تتبع الطلبات
-Processing → Shipping → Delivered
-مع تجربة واضحة وشفافة للمستخدم
-
-🔹 💾 Local Storage Integration
-حفظ الطلبات محليًا لسهولة الرجوع والمتابعة
-بدون الحاجة إلى Backend معقد
-
-🎯 الرؤية من المشروع:
-تبسيط التجارة الإلكترونية، خصوصًا للبيزنس الصغير والمتوسط
-
-✔ بدون بوابات دفع
-✔ بدون تعقيد تقني
-✔ جاهز للتشغيل فورًا
-
-💻 Tech Stack:
-HTML5 | Tailwind CSS | Vanilla JavaScript
-
-📈 القيمة الحقيقية:
-مش مجرد UI جميل…
-لكن نظام بيع عملي، سريع، وقابل للتطبيق فورًا في السوق
-
-🔥 مناسب جدًا لـ:
-
-المتاجر الصغيرة والمتوسطة
-البيع عبر السوشيال ميديا
-أي بيزنس عايز يبدأ Online بسرعة
-
-خلينا نحولها لمنتج حقيقي 👌
-
-#Ecommerce #WebDevelopment #Frontend #UX #UI #JavaScript #TailwindCSS #Startup #Freelance #واتساب #مشاريع
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
