@@ -113,6 +113,16 @@ let searchQ = '';
 let sortVal = 'default';
 let currentProduct = null;
 
+/* ===================== HELPER FUNCTIONS ===================== */
+function getProductImageSrc(product) {
+  // إذا كانت الصورة رابط كامل (يبدأ بـ http أو /), استخدمها كما هي
+  // وإلا، أضف مسار المجلد 'img/'
+  if (product.image.startsWith('http') || product.image.startsWith('/')) {
+    return product.image;
+  }
+  return `img/${product.image}`;
+}
+
 /* ===================== INIT ===================== */
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
@@ -146,11 +156,12 @@ function renderProducts() {
     const disc = p.oldPrice ? Math.round((1 - p.price/p.oldPrice)*100) : null;
     const inWL = wishlist.includes(p.id);
     const stars = renderStars(p.rating);
-    if(p.id<13){
+    const imgSrc = getProductImageSrc(p);
+    
     return ` 
     <div class="product-card fade-up" onclick="openModal('${p.id}')">
       <div class="product-img-wrap">
-        <img src="img/${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
+        <img src="${imgSrc}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
         <div class="product-badges">
           <span class="pb pb-cat">${p.category}</span>
           ${disc ? `<span class="pb pb-sale">-${disc}%</span>` : ''}
@@ -180,46 +191,7 @@ function renderProducts() {
         </div>
       </div>
     </div>`;
-  }
-
-  else{
-    return ` 
-    <div class="product-card fade-up" onclick="openModal('${p.id}')">
-      <div class="product-img-wrap">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
-        <div class="product-badges">
-          <span class="pb pb-cat">${p.category}</span>
-          ${disc ? `<span class="pb pb-sale">-${disc}%</span>` : ''}
-          ${p.isNew ? `<span class="pb pb-new">جديد</span>` : ''}
-        </div>
-        <button class="wishlist-btn-card ${inWL?'active':''}" onclick="event.stopPropagation();toggleWL('${p.id}',this)">
-          <i class="${inWL?'fas':'far'} fa-heart"></i>
-        </button>
-        <div class="product-actions-hover">
-          <button class="pah-btn pah-btn-green" onclick="event.stopPropagation();buyWA('${p.id}')">
-            <i class="fab fa-whatsapp"></i> شراء سريع
-          </button>
-          <button class="pah-btn pah-btn-gold" onclick="event.stopPropagation();addToCart('${p.id}')">
-            <i class="fas fa-shopping-bag"></i>
-          </button>
-        </div>
-      </div>
-      <div class="product-body">
-        <div class="product-cat-label">${p.category}</div>
-        <h3>${p.name}</h3>
-        <div class="stars">${stars}<span>(${p.rating})</span></div>
-        <div class="price-row">
-          <span class="price-main">${p.price.toLocaleString('ar-SA')}</span>
-          <span class="price-unit">ر.س</span>
-          ${p.oldPrice ? `<span class="price-old">${p.oldPrice.toLocaleString('ar-SA')}</span>` : ''}
-          ${disc ? `<span class="discount-tag">وفر ${disc}%</span>` : ''}
-        </div>
-      </div>
-    </div>`;
-  }
-
-
-}).join('');
+  }).join('');
 
   // trigger fade-up for newly rendered cards
   requestAnimationFrame(() => {
@@ -246,7 +218,8 @@ function openModal(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
   currentProduct = p;
-  document.getElementById('modal-img').src = p.image;
+  const imgSrc = getProductImageSrc(p);
+  document.getElementById('modal-img').src = imgSrc;
   document.getElementById('modal-cat').textContent = p.category;
   document.getElementById('modal-name').textContent = p.name;
   document.getElementById('modal-desc').textContent = p.desc;
@@ -304,9 +277,11 @@ function renderCart() {
     container.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-bag"></i><h4>السلة فارغة</h4><p>أضف منتجات للبدء</p></div>`;
     return;
   }
-  container.innerHTML = cart.map(item => `
+  container.innerHTML = cart.map(item => {
+    const imgSrc = getProductImageSrc(item);
+    return `
     <div class="cart-item-row">
-      <img src="${item.image}" alt="${item.name}" class="cart-item-img" referrerpolicy="no-referrer">
+      <img src="${imgSrc}" alt="${item.name}" class="cart-item-img" referrerpolicy="no-referrer">
       <div class="cart-item-body">
         <h4>${item.name}</h4>
         <div class="cart-item-price">${(item.price * item.qty).toLocaleString('ar-SA')} ر.س</div>
@@ -318,7 +293,8 @@ function renderCart() {
       </div>
       <button class="remove-item" onclick="removeFromCart('${item.id}')"><i class="fas fa-trash"></i></button>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function openCartDrawer() {
@@ -374,10 +350,12 @@ function openWishlistView() {
   grid.innerHTML = filtered.map(p => {
     const disc = p.oldPrice ? Math.round((1-p.price/p.oldPrice)*100) : null;
     const stars = renderStars(p.rating);
+    const imgSrc = getProductImageSrc(p);
+    
     return `
     <div class="product-card fade-up" onclick="openModal('${p.id}')">
       <div class="product-img-wrap">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
+        <img src="${imgSrc}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
         <div class="product-badges">
           <span class="pb pb-cat">${p.category}</span>
           ${disc?`<span class="pb pb-sale">-${disc}%</span>`:''}
