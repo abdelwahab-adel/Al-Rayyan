@@ -18,7 +18,7 @@ const products = [
     {
         id: '2',
         name: 'ثلاجة سامسونج 600 لتر',
-        price: 220,
+        price: 1220,
         category: 'أجهزة كهربائية',
         image: '2.webp',
         desc: 'ثلاجة سامسونج متطورة مع تقنية التبريد المزدوج، سعة كبيرة وتصميم عصري يناسب كل مطبخ.', isNew:true, rating:4.8
@@ -26,7 +26,7 @@ const products = [
     {
         id: '3',
         name: 'غسالة ملابس أوتوماتيك',
-        price: 150,
+        price: 1250,
         category: 'أجهزة كهربائية',
         image: '3.webp',
         desc: 'غسالة ملابس أوتوماتيك بالكامل، برامج غسيل متعددة، هادئة وموفرة للمياه والكهرباء.', isNew:false, rating:4.7
@@ -50,7 +50,7 @@ const products = [
     {
         id: '6',
         name: 'شاشة ذكية 55 بوصة 4K',
-        price: 150,
+        price: 950,
         category: 'إلكترونيات',
         image: '6.webp',
         desc: 'تلفزيون ذكي بدقة 4K، يدعم نتفليكس ويوتيوب، ألوان زاهية وتجربة مشاهدة غامرة.', isNew:false, rating:4.2
@@ -82,7 +82,7 @@ const products = [
     {
         id: '12',
         name: 'مكيف هواء إل جي 2 طن',
-        price: 150,
+        price: 1505,
         category: 'أجهزة كهربائية',
         image: '1.webp',
         desc: 'مكيف هواء سبليت إل جي بقوة 2 طن، موفر للطاقة مع تقنية الإنفرتر، مثالي للأجواء الحارة في السعودية.', isNew:false, rating:4.5 
@@ -90,17 +90,14 @@ const products = [
 
 /* ===================== DATA ===================== */
 
-  ,{ id:'23', name:'خلاط كهربائي متعدد الوظائف', price:45, oldPrice:65, category:'أدوات منزلية', image:'https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&q=80&w=600', desc:'خلاط قوي لتحضير العصائر والشوربات، شفرات حادة من الستانلس ستيل، ضمان سنة.', isNew:false, rating:4.5 },
-  { id:'22', name:'طقم أنتريه مودرن 3 قطع - أبيض RA-LR35', price:280, oldPrice:350, category:'أثاث', image:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600', desc:'طقم أنتريه متكامل يتكوّن من كنبتين وكرسي بتصميم عصري يجمع بين الراحة والأناقة.', isNew:false, rating:4  },
-  { id:'12', name:'ثلاجة سامسونج 500 لتر', price:1850, oldPrice:2200, category:'أجهزة كهربائية', image:'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&q=80&w=600', desc:'ثلاجة سامسونج متطورة مع تقنية التبريد المزدوج، سعة كبيرة وتصميم عصري يناسب كل مطبخ.', isNew:true, rating:4.2  },
-  { id:'13', name:'غسالة ملابس أوتوماتيك', price:1200, oldPrice:1500, category:'أجهزة كهربائية', image:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600', desc:'غسالة ملابس أوتوماتيك بالكامل، برامج غسيل متعددة، هادئة وموفرة للمياه والكهرباء.' , isNew:true, rating:4 },
-  { id:'14', name:'طقم قدور جرانيت 10 قطع', price:75, oldPrice:110, category:'أدوات منزلية', image:'https://images.unsplash.com/photo-1584990347449-a5ca91bc5c15?auto=format&fit=crop&q=80&w=600', desc:'طقم قدور طبخ عالي الجودة، غير لاصق، سهل التنظيف، وتوزيع حراري متساوي.', isNew:false, rating:4 },
-  { id:'18', name:'طقم أريكة مودرن فاخر', price:190, oldPrice:260, category:'أثاث', image:'https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&q=80&w=600', desc:'أريكة مريحة بتصميم عصري، قماش عالي الجودة وألوان تناسب جميع الأذواق.', isNew:true, rating:4.3 },
-  { id:'16', name:'شاشة ذكية 50 بوصة 4K', price:1450, oldPrice:1800, category:'إلكترونيات', image:'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&q=80&w=600', desc:'تلفزيون ذكي بدقة 4K، يدعم نتفليكس ويوتيوب، ألوان زاهية وتجربة مشاهدة غامرة.', isNew:true, rating:4.7 },
-  { id:'17', name:'مجموعة منظفات منزلية مميزة', price:15, oldPrice:null, category:'سلع استهلاكية', image:'https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&q=80&w=600', desc:'مجموعة شاملة من المنظفات عالية الجودة للمنزل، فعالة وآمنة للاستخدام اليومي.', isNew:false, rating:4  },
-  { id:'19', name:'سماعة رأس هيدفون cardoO', price:50, oldPrice:80, category:'إلكترونيات', image:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=600', desc:'اشعر بكل نبضة مع محركات صوت 40مم، إلغاء ضوضاء نشط حتى -35dB، بطارية 30 ساعة.', isNew:false, rating:4 },
-  { id:'21', name:'أنتريه مودرن 3 قطع - أوف وايت×برتقالي', price:230, oldPrice:310, category:'أثاث', image:'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=600', desc:'أنتريه مودرن 3 قطع يجمع الأناقة والراحة بتصميم عصري مميز بألوان أوف وايت × برتقالي.', isNew:false, rating:4 },
-  { id:'5', name:'مكيف هواء إل جي 1.5 طن', price:1650, oldPrice:2000, category:'أجهزة كهربائية', image:'12.jpg', desc:'مكيف هواء سبليت إل جي بقوة 1.5 طن، موفر للطاقة مع تقنية الإنفرتر، مثالي للأجواء الحارة.', isNew:false, rating:4.7 }
+  ,{ id:'23', name:'خلاط كهربائي متعدد الوظائف', price:45, oldPrice:65, category:'أدوات منزلية', image:'23.avif', desc:'خلاط قوي لتحضير العصائر والشوربات، شفرات حادة من الستانلس ستيل، ضمان سنة.', isNew:false, rating:4.5 },
+  { id:'22', name:'طقم أنتريه مودرن 3 قطع - أبيض RA-LR35', price:280, oldPrice:350, category:'أثاث', image:'22.avif', desc:'طقم أنتريه متكامل يتكوّن من كنبتين وكرسي بتصميم عصري يجمع بين الراحة والأناقة.', isNew:false, rating:4  },
+  { id:'12', name:'ثلاجة سامسونج 500 لتر', price:1850, oldPrice:2200, category:'أجهزة كهربائية', image:'15.avif', desc:'ثلاجة سامسونج متطورة مع تقنية التبريد المزدوج، سعة كبيرة وتصميم عصري يناسب كل مطبخ.', isNew:true, rating:4.2  },
+  { id:'18', name:'طقم أريكة مودرن فاخر', price:190, oldPrice:260, category:'أثاث', image:'18.avif', desc:'أريكة مريحة بتصميم عصري، قماش عالي الجودة وألوان تناسب جميع الأذواق.', isNew:true, rating:4.3 },
+  { id:'16', name:'شاشة ذكية 50 بوصة 4K', price:1450, oldPrice:1800, category:'إلكترونيات', image:'16.avif', desc:'تلفزيون ذكي بدقة 4K، يدعم نتفليكس ويوتيوب، ألوان زاهية وتجربة مشاهدة غامرة.', isNew:true, rating:4.7 },
+  { id:'19', name:'سماعة رأس هيدفون cardoO', price:50, oldPrice:80, category:'إلكترونيات', image:'19.avif', desc:'اشعر بكل نبضة مع محركات صوت 40مم، إلغاء ضوضاء نشط حتى -35dB، بطارية 30 ساعة.', isNew:false, rating:4 },
+  { id:'21', name:'أنتريه مودرن 3 قطع - أوف وايت×برتقالي', price:230, oldPrice:310, category:'أثاث', image:'22.avif', desc:'أنتريه مودرن 3 قطع يجمع الأناقة والراحة بتصميم عصري مميز بألوان أوف وايت × برتقالي.', isNew:false, rating:4 },
+  { id:'20', name:'مكيف هواء إل جي 1 طن', price:1650, oldPrice:2000, category:'أجهزة كهربائية', image:'12.jpg', desc:'مكيف هواء سبليت إل جي بقوة 2 طن، موفر للطاقة مع تقنية الإنفرتر، مثالي للأجواء الحارة.', isNew:false, rating:4.7 }
 ];
 
 const WA_NUM = "201068300432";
@@ -146,8 +143,7 @@ function renderProducts() {
     const disc = p.oldPrice ? Math.round((1 - p.price/p.oldPrice)*100) : null;
     const inWL = wishlist.includes(p.id);
     const stars = renderStars(p.rating);
-    if(p.id<13){
-    return ` 
+    return `
     <div class="product-card fade-up" onclick="openModal('${p.id}')">
       <div class="product-img-wrap">
         <img src="img/${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
@@ -180,46 +176,7 @@ function renderProducts() {
         </div>
       </div>
     </div>`;
-  }
-
-  else{
-    return ` 
-    <div class="product-card fade-up" onclick="openModal('${p.id}')">
-      <div class="product-img-wrap">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
-        <div class="product-badges">
-          <span class="pb pb-cat">${p.category}</span>
-          ${disc ? `<span class="pb pb-sale">-${disc}%</span>` : ''}
-          ${p.isNew ? `<span class="pb pb-new">جديد</span>` : ''}
-        </div>
-        <button class="wishlist-btn-card ${inWL?'active':''}" onclick="event.stopPropagation();toggleWL('${p.id}',this)">
-          <i class="${inWL?'fas':'far'} fa-heart"></i>
-        </button>
-        <div class="product-actions-hover">
-          <button class="pah-btn pah-btn-green" onclick="event.stopPropagation();buyWA('${p.id}')">
-            <i class="fab fa-whatsapp"></i> شراء سريع
-          </button>
-          <button class="pah-btn pah-btn-gold" onclick="event.stopPropagation();addToCart('${p.id}')">
-            <i class="fas fa-shopping-bag"></i>
-          </button>
-        </div>
-      </div>
-      <div class="product-body">
-        <div class="product-cat-label">${p.category}</div>
-        <h3>${p.name}</h3>
-        <div class="stars">${stars}<span>(${p.rating})</span></div>
-        <div class="price-row">
-          <span class="price-main">${p.price.toLocaleString('ar-SA')}</span>
-          <span class="price-unit">ر.س</span>
-          ${p.oldPrice ? `<span class="price-old">${p.oldPrice.toLocaleString('ar-SA')}</span>` : ''}
-          ${disc ? `<span class="discount-tag">وفر ${disc}%</span>` : ''}
-        </div>
-      </div>
-    </div>`;
-  }
-
-
-}).join('');
+  }).join('');
 
   // trigger fade-up for newly rendered cards
   requestAnimationFrame(() => {
@@ -246,7 +203,7 @@ function openModal(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
   currentProduct = p;
-  document.getElementById('modal-img').src = p.image;
+  document.getElementById('modal-img').src ='img/'+p.image;
   document.getElementById('modal-cat').textContent = p.category;
   document.getElementById('modal-name').textContent = p.name;
   document.getElementById('modal-desc').textContent = p.desc;
@@ -306,7 +263,7 @@ function renderCart() {
   }
   container.innerHTML = cart.map(item => `
     <div class="cart-item-row">
-      <img src="${item.image}" alt="${item.name}" class="cart-item-img" referrerpolicy="no-referrer">
+      <img src="img/${item.image}" alt="${item.name}" class="cart-item-img" referrerpolicy="no-referrer">
       <div class="cart-item-body">
         <h4>${item.name}</h4>
         <div class="cart-item-price">${(item.price * item.qty).toLocaleString('ar-SA')} ر.س</div>
@@ -377,7 +334,7 @@ function openWishlistView() {
     return `
     <div class="product-card fade-up" onclick="openModal('${p.id}')">
       <div class="product-img-wrap">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
+        <img src="img/${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
         <div class="product-badges">
           <span class="pb pb-cat">${p.category}</span>
           ${disc?`<span class="pb pb-sale">-${disc}%</span>`:''}
