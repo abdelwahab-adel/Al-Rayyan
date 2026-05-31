@@ -960,8 +960,7 @@ background:
         overflow-y:auto;
         border-radius:var(--radius-lg);
       }
-     .modal-img-side {height: 600px; margin-bottom: -545px;}
-
+      .modal-img-side {height: 600px; }
       .modal-info-side { padding:24px; max-height:none; }
       .modal-name { font-size:20px; }
       .modal-price { font-size:28px; }
@@ -998,8 +997,7 @@ background:
         width:100%;
         max-width:100%;
       }
-     .modal-img-side {height: 600px; margin-bottom: -545px;}
-
+      .modal-img-side {height: 600px; }
 
       .modal-img-side img { object-position:center top; }
       .modal-info-side { padding:20px 20px 32px; }
@@ -1037,7 +1035,7 @@ background:
       /* Categories: تصغير الـ pills */
       .cat-pill { padding:10px 14px; font-size:13px; }
       /* Modal */
-      .modal-img-side {height: 600px; margin-bottom: -545px;}
+      .modal-img-side {height: 600px;margin-bottom: -545px;}
       .modal-info-side { padding:16px 16px 28px; }
       .modal-name { font-size:16px; }
       .modal-price { font-size:22px; }
