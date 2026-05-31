@@ -5,7 +5,7 @@ const products = [
         price: 45,
         category: 'أدوات منزلية',
         image: '5.webp',
-        description: 'خلاط قوي لتحضير العصائر والشوربات، شفرات حادة من الستانلس ستيل.'
+        desc: 'خلاط قوي لتحضير العصائر والشوربات، شفرات حادة من الستانلس ستيل.', isNew:false, rating:4.5 
     },
     {
         id: '10',
@@ -13,15 +13,15 @@ const products = [
         price: 280,
         category: 'أثاث',
         image: '10.webp',
-        description: 'طقم أنتريه متكامل يتكوّن من كنبتين وكرسي بتصميم عصري يجمع بين الراحة والأناقة. يوفر مساحة جلوس واسعة ومريحة للاستخدام اليومي أو الاستقبال، مع خامات متينة تضمن ثباتًا وجودة تدوم طويلًا. اللون الأبيض يمنح الغرفة مظهرًا مرتبًا وهادئًا، ويسهل تنسيقه مع مختلف أنماط الديكور ليكون إضافة عملية وجذابة لأي مساحة.'
+        desc: 'طقم أنتريه متكامل يتكوّن من كنبتين وكرسي بتصميم عصري يجمع بين الراحة والأناقة. يوفر مساحة جلوس واسعة ومريحة للاستخدام اليومي أو الاستقبال، مع خامات متينة تضمن ثباتًا وجودة تدوم طويلًا. اللون الأبيض يمنح الغرفة مظهرًا مرتبًا وهادئًا، ويسهل تنسيقه مع مختلف أنماط الديكور ليكون إضافة عملية وجذابة لأي مساحة.'
     },
     {
         id: '2',
-        name: 'ثلاجة سامسونج 500 لتر',
+        name: 'ثلاجة سامسونج 600 لتر',
         price: 220,
         category: 'أجهزة كهربائية',
         image: '2.webp',
-        description: 'ثلاجة سامسونج متطورة مع تقنية التبريد المزدوج، سعة كبيرة وتصميم عصري يناسب كل مطبخ.'
+        desc: 'ثلاجة سامسونج متطورة مع تقنية التبريد المزدوج، سعة كبيرة وتصميم عصري يناسب كل مطبخ.', isNew:true, rating:4.8
     },
     {
         id: '3',
@@ -29,7 +29,7 @@ const products = [
         price: 150,
         category: 'أجهزة كهربائية',
         image: '3.webp',
-        description: 'غسالة ملابس أوتوماتيك بالكامل، برامج غسيل متعددة، هادئة وموفرة للمياه والكهرباء.'
+        desc: 'غسالة ملابس أوتوماتيك بالكامل، برامج غسيل متعددة، هادئة وموفرة للمياه والكهرباء.', isNew:false, rating:4.7
     },
     {
         id: '4',
@@ -37,7 +37,7 @@ const products = [
         price: 75,
         category: 'أدوات منزلية',
         image: '4.webp',
-        description: 'طقم قدور طبخ عالي الجودة، غير لاصق، سهل التنظيف، وتوزيع حراري متساوي.'
+        desc: 'طقم قدور طبخ عالي الجودة، غير لاصق، سهل التنظيف، وتوزيع حراري متساوي.', isNew:false, rating:4.3
     },
     {
         id: '8',
@@ -45,7 +45,7 @@ const products = [
         price: 190,
         category: 'أثاث',
         image: '8.webp',
-        description: 'أريكة مريحة بتصميم عصري، قماش عالي الجودة وألوان تناسب جميع الأذواق.'
+        desc: 'أريكة مريحة بتصميم عصري، قماش عالي الجودة وألوان تناسب جميع الأذواق.', isNew:false, rating:4.6 
     },
     {
         id: '6',
@@ -53,7 +53,7 @@ const products = [
         price: 150,
         category: 'إلكترونيات',
         image: '6.webp',
-        description: 'تلفزيون ذكي بدقة 4K، يدعم نتفليكس ويوتيوب، ألوان زاهية وتجربة مشاهدة غامرة.'
+        desc: 'تلفزيون ذكي بدقة 4K، يدعم نتفليكس ويوتيوب، ألوان زاهية وتجربة مشاهدة غامرة.', isNew:false, rating:4.2
     },
     {
         id: '7',
@@ -61,7 +61,7 @@ const products = [
         price: 15,
         category: 'سلع استهلاكية',
         image: '7.jpg',
-        description: 'مجموعة شاملة من المنظفات عالية الجودة للمنزل، فعالة وآمنة.'
+        desc: 'مجموعة شاملة من المنظفات عالية الجودة للمنزل، فعالة وآمنة.', isNew:true, rating:4.9 
     },
     {
         id: '9',
@@ -69,7 +69,7 @@ const products = [
         price: 50,
         category: 'إلكترونيات',
         image: '9.webp',
-        description: 'اشعر بكل نبضة مع محركات صوت 40 مم تقدم صوتاً عميقاً وغنياً مع تريبل نقي.انعزل عن العالم أو تواصل معه بفضل ميزة إلغاء الضوضاء النشط الهجين حتى -35 ديسيبل ووضع الشفافية.تحكّم كامل بين يديك من خلال تطبيق cardoO لإدارة الإعدادات والأنماط وتحديثات النظام بكل سهولة.تحدث بثقة تامة بفضل تقنية الـ 4 ميكروفونات التي تضمن مكالمات نقية وواضحة في جميع الظروف.'
+        desc: 'اشعر بكل نبضة مع محركات صوت 40 مم تقدم صوتاً عميقاً وغنياً مع تريبل نقي.انعزل عن العالم أو تواصل معه بفضل ميزة إلغاء الضوضاء النشط الهجين حتى -35 ديسيبل ووضع الشفافية.تحكّم كامل بين يديك من خلال تطبيق cardoO لإدارة الإعدادات والأنماط وتحديثات النظام بكل سهولة.تحدث بثقة تامة بفضل تقنية الـ 4 ميكروفونات التي تضمن مكالمات نقية وواضحة في جميع الظروف.', isNew:false, rating:4.6 
     },
     {
         id: '11',
@@ -77,7 +77,7 @@ const products = [
         price: 230,
         category: 'أثاث',
         image: '11.jpg',
-        description: 'أنتريه مودرن 3 قطع يجمع بين الأناقة والراحة بتصميم عصري مميز. يأتي بألوان أوف وايت × برتقالي لتضيف لمسة حيوية ودافئة لغرفة المعيشة، مع خامات عالية الجودة توفر المتانة وطول العمر، وتصميم عملي يضمن جلوسًا مريحًا وتجربة فاخرة للمكانالمنتج متاح: عند الطلب'
+        desc: 'أنتريه مودرن 3 قطع يجمع بين الأناقة والراحة بتصميم عصري مميز. يأتي بألوان أوف وايت × برتقالي لتضيف لمسة حيوية ودافئة لغرفة المعيشة، مع خامات عالية الجودة توفر المتانة وطول العمر، وتصميم عملي يضمن جلوسًا مريحًا وتجربة فاخرة للمكانالمنتج متاح: عند الطلب', isNew:true, rating:4.8 
     },
     {
         id: '12',
@@ -85,311 +85,466 @@ const products = [
         price: 150,
         category: 'أجهزة كهربائية',
         image: '1.webp',
-        description: 'مكيف هواء سبليت إل جي بقوة 2 طن، موفر للطاقة مع تقنية الإنفرتر، مثالي للأجواء الحارة في السعودية.'
+        desc: 'مكيف هواء سبليت إل جي بقوة 2 طن، موفر للطاقة مع تقنية الإنفرتر، مثالي للأجواء الحارة في السعودية.', isNew:false, rating:4.5 
     }
+
+/* ===================== DATA ===================== */
+
+  ,{ id:'23', name:'خلاط كهربائي متعدد الوظائف', price:45, oldPrice:65, category:'أدوات منزلية', image:'https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&q=80&w=600', desc:'خلاط قوي لتحضير العصائر والشوربات، شفرات حادة من الستانلس ستيل، ضمان سنة.', isNew:false, rating:4.5 },
+  { id:'22', name:'طقم أنتريه مودرن 3 قطع - أبيض RA-LR35', price:280, oldPrice:350, category:'أثاث', image:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600', desc:'طقم أنتريه متكامل يتكوّن من كنبتين وكرسي بتصميم عصري يجمع بين الراحة والأناقة.', isNew:false, rating:4  },
+  { id:'12', name:'ثلاجة سامسونج 500 لتر', price:1850, oldPrice:2200, category:'أجهزة كهربائية', image:'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&q=80&w=600', desc:'ثلاجة سامسونج متطورة مع تقنية التبريد المزدوج، سعة كبيرة وتصميم عصري يناسب كل مطبخ.', isNew:true, rating:4.2  },
+  { id:'13', name:'غسالة ملابس أوتوماتيك', price:1200, oldPrice:1500, category:'أجهزة كهربائية', image:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600', desc:'غسالة ملابس أوتوماتيك بالكامل، برامج غسيل متعددة، هادئة وموفرة للمياه والكهرباء.' , isNew:true, rating:4 },
+  { id:'14', name:'طقم قدور جرانيت 10 قطع', price:75, oldPrice:110, category:'أدوات منزلية', image:'https://images.unsplash.com/photo-1584990347449-a5ca91bc5c15?auto=format&fit=crop&q=80&w=600', desc:'طقم قدور طبخ عالي الجودة، غير لاصق، سهل التنظيف، وتوزيع حراري متساوي.', isNew:false, rating:4 },
+  { id:'18', name:'طقم أريكة مودرن فاخر', price:190, oldPrice:260, category:'أثاث', image:'https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&q=80&w=600', desc:'أريكة مريحة بتصميم عصري، قماش عالي الجودة وألوان تناسب جميع الأذواق.', isNew:true, rating:4.3 },
+  { id:'16', name:'شاشة ذكية 50 بوصة 4K', price:1450, oldPrice:1800, category:'إلكترونيات', image:'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&q=80&w=600', desc:'تلفزيون ذكي بدقة 4K، يدعم نتفليكس ويوتيوب، ألوان زاهية وتجربة مشاهدة غامرة.', isNew:true, rating:4.7 },
+  { id:'17', name:'مجموعة منظفات منزلية مميزة', price:15, oldPrice:null, category:'سلع استهلاكية', image:'https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&q=80&w=600', desc:'مجموعة شاملة من المنظفات عالية الجودة للمنزل، فعالة وآمنة للاستخدام اليومي.', isNew:false, rating:4  },
+  { id:'19', name:'سماعة رأس هيدفون cardoO', price:50, oldPrice:80, category:'إلكترونيات', image:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=600', desc:'اشعر بكل نبضة مع محركات صوت 40مم، إلغاء ضوضاء نشط حتى -35dB، بطارية 30 ساعة.', isNew:false, rating:4 },
+  { id:'21', name:'أنتريه مودرن 3 قطع - أوف وايت×برتقالي', price:230, oldPrice:310, category:'أثاث', image:'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=600', desc:'أنتريه مودرن 3 قطع يجمع الأناقة والراحة بتصميم عصري مميز بألوان أوف وايت × برتقالي.', isNew:false, rating:4 },
+  { id:'5', name:'مكيف هواء إل جي 1.5 طن', price:1650, oldPrice:2000, category:'أجهزة كهربائية', image:'12.jpg', desc:'مكيف هواء سبليت إل جي بقوة 1.5 طن، موفر للطاقة مع تقنية الإنفرتر، مثالي للأجواء الحارة.', isNew:false, rating:4.7 }
 ];
 
-let cart = [];
-let selectedCategory = 'الكل';
-let searchQuery = '';
+const WA_NUM = "201068300432";
 
-// DOM Elements
-const productsGrid = document.getElementById('products-grid');
-const cartCountElement = document.getElementById('cart-count');
-const searchInput = document.getElementById('search-input');
-const searchBtn = document.getElementById('search-btn');
-const categoryCards = document.querySelectorAll('.category-card');
-const productsTitle = document.getElementById('products-title');
-const modal = document.getElementById('product-modal');
-const closeModal = document.querySelector('.close-modal');
+/* ===================== STATE ===================== */
+let cart = JSON.parse(localStorage.getItem('ry_cart')||'[]');
+let wishlist = JSON.parse(localStorage.getItem('ry_wl')||'[]');
+let selectedCat = 'الكل';
+let searchQ = '';
+let sortVal = 'default';
+let currentProduct = null;
 
-// Cart Elements
-const cartDrawer = document.getElementById('cart-drawer');
-const openCartBtn = document.getElementById('open-cart');
-const closeCartBtn = document.getElementById('close-cart');
-const cartItemsContainer = document.getElementById('cart-items-container');
-const cartTotalValue = document.getElementById('cart-total-value');
-const checkoutBtn = document.getElementById('checkout-btn');
+/* ===================== INIT ===================== */
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+  renderCart();
+  updateWLBadge();
+  setupEvents();
+  startCountdown();
+  startNotifications();
+  initScrollEffects();
+});
 
-// Initialize
-function init() {
-    renderProducts();
-    setupEventListeners();
-    loadCart();
-}
-
-// Render Products
+/* ===================== RENDER PRODUCTS ===================== */
 function renderProducts() {
-    const filtered = products.filter(p => {
-        const matchesSearch = p.name.includes(searchQuery) || p.category.includes(searchQuery);
-        const matchesCategory = selectedCategory === 'الكل' || p.category === selectedCategory;
-        return matchesSearch && matchesCategory;
+  let filtered = products.filter(p => {
+    const qMatch = p.name.includes(searchQ) || p.category.includes(searchQ) || p.desc.includes(searchQ);
+    const catMatch = selectedCat === 'الكل' || p.category === selectedCat;
+    return qMatch && catMatch;
+  });
+
+  if (sortVal === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+  else if (sortVal === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+  else if (sortVal === 'name') filtered.sort((a,b) => a.name.localeCompare(b.name,'ar'));
+
+  const grid = document.getElementById('products-grid');
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><h3>لا توجد نتائج</h3><p>حاول تغيير معايير البحث أو الفلترة</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => {
+    const disc = p.oldPrice ? Math.round((1 - p.price/p.oldPrice)*100) : null;
+    const inWL = wishlist.includes(p.id);
+    const stars = renderStars(p.rating);
+    if(p.id<13){
+    return ` 
+    <div class="product-card fade-up" onclick="openModal('${p.id}')">
+      <div class="product-img-wrap">
+        <img src="img/${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
+        <div class="product-badges">
+          <span class="pb pb-cat">${p.category}</span>
+          ${disc ? `<span class="pb pb-sale">-${disc}%</span>` : ''}
+          ${p.isNew ? `<span class="pb pb-new">جديد</span>` : ''}
+        </div>
+        <button class="wishlist-btn-card ${inWL?'active':''}" onclick="event.stopPropagation();toggleWL('${p.id}',this)">
+          <i class="${inWL?'fas':'far'} fa-heart"></i>
+        </button>
+        <div class="product-actions-hover">
+          <button class="pah-btn pah-btn-green" onclick="event.stopPropagation();buyWA('${p.id}')">
+            <i class="fab fa-whatsapp"></i> شراء سريع
+          </button>
+          <button class="pah-btn pah-btn-gold" onclick="event.stopPropagation();addToCart('${p.id}')">
+            <i class="fas fa-shopping-bag"></i>
+          </button>
+        </div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat-label">${p.category}</div>
+        <h3>${p.name}</h3>
+        <div class="stars">${stars}<span>(${p.rating})</span></div>
+        <div class="price-row">
+          <span class="price-main">${p.price.toLocaleString('ar-SA')}</span>
+          <span class="price-unit">ر.س</span>
+          ${p.oldPrice ? `<span class="price-old">${p.oldPrice.toLocaleString('ar-SA')}</span>` : ''}
+          ${disc ? `<span class="discount-tag">وفر ${disc}%</span>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }
+
+  else{
+    return ` 
+    <div class="product-card fade-up" onclick="openModal('${p.id}')">
+      <div class="product-img-wrap">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
+        <div class="product-badges">
+          <span class="pb pb-cat">${p.category}</span>
+          ${disc ? `<span class="pb pb-sale">-${disc}%</span>` : ''}
+          ${p.isNew ? `<span class="pb pb-new">جديد</span>` : ''}
+        </div>
+        <button class="wishlist-btn-card ${inWL?'active':''}" onclick="event.stopPropagation();toggleWL('${p.id}',this)">
+          <i class="${inWL?'fas':'far'} fa-heart"></i>
+        </button>
+        <div class="product-actions-hover">
+          <button class="pah-btn pah-btn-green" onclick="event.stopPropagation();buyWA('${p.id}')">
+            <i class="fab fa-whatsapp"></i> شراء سريع
+          </button>
+          <button class="pah-btn pah-btn-gold" onclick="event.stopPropagation();addToCart('${p.id}')">
+            <i class="fas fa-shopping-bag"></i>
+          </button>
+        </div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat-label">${p.category}</div>
+        <h3>${p.name}</h3>
+        <div class="stars">${stars}<span>(${p.rating})</span></div>
+        <div class="price-row">
+          <span class="price-main">${p.price.toLocaleString('ar-SA')}</span>
+          <span class="price-unit">ر.س</span>
+          ${p.oldPrice ? `<span class="price-old">${p.oldPrice.toLocaleString('ar-SA')}</span>` : ''}
+          ${disc ? `<span class="discount-tag">وفر ${disc}%</span>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }
+
+
+}).join('');
+
+  // trigger fade-up for newly rendered cards
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.product-card.fade-up').forEach((el,i) => {
+      setTimeout(() => el.classList.add('visible'), i * 80);
     });
+  });
 
-    productsGrid.innerHTML = '';
-    
-    if (filtered.length === 0) {
-        productsGrid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 50px;">
-                <i class="fas fa-search" style="font-size: 48px; color: #ddd; margin-bottom: 20px; display: block;"></i>
-                <h3>عذراً، لم نجد أي منتجات</h3>
-                <p>حاول البحث بكلمات أخرى أو تغيير القسم المختار.</p>
-            </div>
-        `;
-        return;
-    }
-
-    filtered.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card animate';
-        card.onclick = () => openProductModal(product);
-        card.innerHTML = `
-            <div class="product-img">
-                <img src="img/${product.image}" alt="${product.name}" referrerPolicy="no-referrer">
-                <span class="product-badge">${product.category}</span>
-            </div>
-            <div class="product-info">
-                <h3>${product.name}</h3>
-                <p class="product-description">${product.description}</p>
-                <span class="product-price">${product.price} <span>ر.س</span></span>
-                <div class="product-actions">
-                    <button class="btn-whatsapp" onclick="event.stopPropagation(); buyViaWhatsApp('${product.name}', ${product.price})">
-                        <i class="fab fa-whatsapp"></i> شراء سريع
-                    </button>
-                    <button class="btn-cart" onclick="event.stopPropagation(); addToCart('${product.id}')">
-                        <i class="fas fa-shopping-bag"></i>
-                    </button>
-                </div>
-            </div>
-        `;
-        productsGrid.appendChild(card);
-    });
-
-    productsTitle.innerText = selectedCategory === 'الكل' ? 'أحدث المنتجات' : `منتجات ${selectedCategory}`;
+  document.getElementById('products-title').textContent = selectedCat === 'الكل' ? 'أحدث المنتجات' : `منتجات ${selectedCat}`;
 }
 
-// Event Listeners
-function setupEventListeners() {
-    // Search Toggle
-    searchBtn.addEventListener('click', () => {
-        searchInput.classList.toggle('active');
-        if (searchInput.classList.contains('active')) {
-            searchInput.focus();
-        }
-    });
-
-    // Search Input
-    searchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value;
-        renderProducts();
-    });
-
-    // Category Filtering
-    categoryCards.forEach(card => {
-        card.addEventListener('click', () => {
-            categoryCards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-            selectedCategory = card.dataset.category;
-            renderProducts();
-            scrollToSection('products');
-        });
-    });
-
-    // Close Modal
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // Cart Drawer Listeners
-    openCartBtn.addEventListener('click', () => {
-        cartDrawer.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-
-    closeCartBtn.addEventListener('click', () => {
-        cartDrawer.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-
-    checkoutBtn.addEventListener('click', checkoutViaWhatsApp);
+function renderStars(rating) {
+  let html = '';
+  for(let i=1;i<=5;i++){
+    if(rating >= i) html += '<i class="fas fa-star"></i>';
+    else if(rating >= i-0.5) html += '<i class="fas fa-star-half-alt"></i>';
+    else html += '<i class="far fa-star"></i>';
+  }
+  return html;
 }
 
-// Open Product Modal
-function openProductModal(product) {
-    document.getElementById('modal-product-image').src = `img/${product.image}`;
-    document.getElementById('modal-product-name').innerText = product.name;
-    document.getElementById('modal-product-category').innerText = product.category;
-    document.getElementById('modal-product-description').innerText = product.description;
-    document.getElementById('modal-product-price').innerText = product.price;
-    
-    document.getElementById('modal-buy-btn').onclick = () => addToCart(product.id);
-    document.getElementById('modal-buy-btn').innerHTML = '<i class="fas fa-shopping-bag"></i> إضافة للسلة';
-    
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+/* ===================== MODAL ===================== */
+function openModal(id) {
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  currentProduct = p;
+  document.getElementById('modal-img').src = p.image;
+  document.getElementById('modal-cat').textContent = p.category;
+  document.getElementById('modal-name').textContent = p.name;
+  document.getElementById('modal-desc').textContent = p.desc;
+  const disc = p.oldPrice ? Math.round((1 - p.price/p.oldPrice)*100) : null;
+  document.getElementById('modal-price').innerHTML = `${p.price.toLocaleString('ar-SA')} <span>ر.س ${p.oldPrice?`<s style="font-size:14px;color:var(--gray-400)">${p.oldPrice.toLocaleString('ar-SA')}</s>`:''} ${disc?`<em style="color:var(--red);font-style:normal;font-size:14px">وفر ${disc}%</em>`:''}</span>`;
+  document.getElementById('modal-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
-// Cart Functions
-function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    const existingItem = cart.find(item => item.id === productId);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({ ...product, quantity: 1 });
-    }
-
-    updateCartUI();
-    saveCart();
-    
-    // Show cart drawer when adding
-    cartDrawer.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    // Close modal if open
-    modal.style.display = 'none';
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+  currentProduct = null;
 }
 
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    updateCartUI();
-    saveCart();
+/* ===================== CART ===================== */
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  const existing = cart.find(x => x.id === id);
+  if(existing) existing.qty++;
+  else cart.push({...p, qty:1});
+  saveCart();
+  renderCart();
+  openCartDrawer();
 }
 
-function updateQuantity(productId, delta) {
-    const item = cart.find(item => item.id === productId);
-    if (item) {
-        item.quantity += delta;
-        if (item.quantity <= 0) {
-            removeFromCart(productId);
-        } else {
-            updateCartUI();
-            saveCart();
-        }
-    }
+function removeFromCart(id) {
+  cart = cart.filter(x => x.id !== id);
+  saveCart();
+  renderCart();
 }
 
-function updateCartUI() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCountElement.innerText = totalItems;
-
-    cartItemsContainer.innerHTML = '';
-    
-    if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<div class="empty-cart-msg">السلة فارغة حالياً</div>';
-        cartTotalValue.innerText = '0';
-        return;
-    }
-
-    let total = 0;
-    cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-
-        const itemEl = document.createElement('div');
-        itemEl.className = 'cart-item';
-        itemEl.innerHTML = `
-            <img src="img/${item.image}" alt="${item.name}" class="cart-item-img">
-            <div class="cart-item-info">
-                <h4>${item.name}</h4>
-                <span class="price">${item.price} ر.س</span>
-                <div class="cart-item-qty">
-                    <span class="qty-btn" onclick="updateQuantity('${item.id}', -1)">-</span>
-                    <span>${item.quantity}</span>
-                    <span class="qty-btn" onclick="updateQuantity('${item.id}', 1)">+</span>
-                </div>
-            </div>
-            <i class="fas fa-trash cart-item-remove" onclick="removeFromCart('${item.id}')"></i>
-        `;
-        cartItemsContainer.appendChild(itemEl);
-    });
-
-    cartTotalValue.innerText = total;
+function changeQty(id, delta) {
+  const item = cart.find(x => x.id === id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) removeFromCart(id);
+  else { saveCart(); renderCart(); }
 }
 
 function saveCart() {
-    localStorage.setItem('alrayyan_cart', JSON.stringify(cart));
+  localStorage.setItem('ry_cart', JSON.stringify(cart));
 }
 
-function loadCart() {
-    const savedCart = localStorage.getItem('alrayyan_cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-        updateCartUI();
-    }
+function renderCart() {
+  const total = cart.reduce((s,x) => s + x.price*x.qty, 0);
+  const totalItems = cart.reduce((s,x) => s + x.qty, 0);
+  document.getElementById('cart-count').textContent = totalItems;
+  document.getElementById('cart-head-count').textContent = totalItems;
+  document.getElementById('cart-total').textContent = total.toLocaleString('ar-SA');
+
+  const container = document.getElementById('cart-items');
+  if(!cart.length) {
+    container.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-bag"></i><h4>السلة فارغة</h4><p>أضف منتجات للبدء</p></div>`;
+    return;
+  }
+  container.innerHTML = cart.map(item => `
+    <div class="cart-item-row">
+      <img src="${item.image}" alt="${item.name}" class="cart-item-img" referrerpolicy="no-referrer">
+      <div class="cart-item-body">
+        <h4>${item.name}</h4>
+        <div class="cart-item-price">${(item.price * item.qty).toLocaleString('ar-SA')} ر.س</div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+        </div>
+      </div>
+      <button class="remove-item" onclick="removeFromCart('${item.id}')"><i class="fas fa-trash"></i></button>
+    </div>
+  `).join('');
 }
 
-// Checkout Functions
-function checkoutViaWhatsApp() {
-    if (cart.length === 0) {
-        alert('السلة فارغة!');
-        return;
-    }
+function openCartDrawer() {
+  document.getElementById('cart-drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    const orderId = 'RAY-' + Math.floor(Math.random() * 900000 + 100000);
-    const phoneNumber = "201068300432";
-    
-    let message = `*طلب جديد من متجر الريان*\n`;
-    message += `*رقم الطلب:* ${orderId}\n`;
-    message += `--------------------------\n`;
-    
-    cart.forEach(item => {
-        message += `• ${item.name} (x${item.quantity}) - ${item.price * item.quantity} ر.س\n`;
+function closeCartDrawer() {
+  document.getElementById('cart-drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ===================== WISHLIST ===================== */
+function toggleWL(id, btn) {
+  if(wishlist.includes(id)) {
+    wishlist = wishlist.filter(x => x !== id);
+    if(btn) { btn.classList.remove('active'); btn.querySelector('i').className='far fa-heart'; }
+  } else {
+    wishlist.push(id);
+    if(btn) { btn.classList.add('active'); btn.querySelector('i').className='fas fa-heart'; }
+  }
+  localStorage.setItem('ry_wl', JSON.stringify(wishlist));
+  updateWLBadge();
+}
+
+function updateWLBadge() {
+  const badge = document.getElementById('wl-count');
+  badge.textContent = wishlist.length;
+  badge.style.display = wishlist.length ? 'flex' : 'none';
+}
+
+function openWishlistView() {
+  selectedCat = 'الكل';
+  searchQ = '';
+  document.getElementById('search-inp').value = '';
+  // Show only wishlist products
+  const grid = document.getElementById('products-grid');
+  const wlProds = products.filter(p => wishlist.includes(p.id));
+  document.getElementById('products-title').textContent = 'المفضلة';
+  scrollToSec('products');
+  // Temporarily render wishlist
+  if(!wlProds.length) {
+    grid.innerHTML = `<div class="empty-state"><i class="far fa-heart"></i><h3>لا توجد منتجات في المفضلة</h3><p>اضغط على القلب لإضافة منتجات</p></div>`;
+    return;
+  }
+  // Reuse renderProducts but for wishlist
+  const temp = selectedCat;
+  selectedCat = 'الكل';
+  // filter manually
+  const filtered = wlProds;
+  grid.innerHTML = filtered.map(p => {
+    const disc = p.oldPrice ? Math.round((1-p.price/p.oldPrice)*100) : null;
+    const stars = renderStars(p.rating);
+    return `
+    <div class="product-card fade-up" onclick="openModal('${p.id}')">
+      <div class="product-img-wrap">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer">
+        <div class="product-badges">
+          <span class="pb pb-cat">${p.category}</span>
+          ${disc?`<span class="pb pb-sale">-${disc}%</span>`:''}
+        </div>
+        <button class="wishlist-btn-card active" onclick="event.stopPropagation();toggleWL('${p.id}',this);renderProducts()">
+          <i class="fas fa-heart"></i>
+        </button>
+        <div class="product-actions-hover">
+          <button class="pah-btn pah-btn-green" onclick="event.stopPropagation();buyWA('${p.id}')"><i class="fab fa-whatsapp"></i> شراء سريع</button>
+          <button class="pah-btn pah-btn-gold" onclick="event.stopPropagation();addToCart('${p.id}')"><i class="fas fa-shopping-bag"></i></button>
+        </div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat-label">${p.category}</div>
+        <h3>${p.name}</h3>
+        <div class="stars">${stars}<span>(${p.rating})</span></div>
+        <div class="price-row">
+          <span class="price-main">${p.price.toLocaleString('ar-SA')}</span>
+          <span class="price-unit">ر.س</span>
+          ${p.oldPrice?`<span class="price-old">${p.oldPrice.toLocaleString('ar-SA')}</span>`:''}
+          ${disc?`<span class="discount-tag">وفر ${disc}%</span>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  requestAnimationFrame(()=>{
+    document.querySelectorAll('.product-card.fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),i*80));
+  });
+}
+
+/* ===================== CHECKOUT ===================== */
+function checkoutWA() {
+  if(!cart.length) { alert('السلة فارغة!'); return; }
+  const orderId = 'RAY-' + Math.floor(Math.random()*900000+100000);
+  let msg = `*طلب جديد من متجر الريان*\n*رقم الطلب:* ${orderId}\n----------------------------\n`;
+  cart.forEach(item => {
+    msg += `• ${item.name} (×${item.qty}) — ${(item.price*item.qty).toLocaleString('ar-SA')} ر.س\n`;
+  });
+  const total = cart.reduce((s,x)=>s+x.price*x.qty,0);
+  msg += `----------------------------\n*الإجمالي:* ${total.toLocaleString('ar-SA')} ر.س\n\nأود تأكيد الطلب، شكراً.`;
+  window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function buyWA(id) {
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  const msg = encodeURIComponent(`مرحباً متجر الريان، أود شراء: ${p.name} بسعر ${p.price.toLocaleString('ar-SA')} ر.س`);
+  window.open(`https://wa.me/${WA_NUM}?text=${msg}`, '_blank');
+}
+
+/* ===================== EVENTS ===================== */
+function setupEvents() {
+  // Search
+  document.getElementById('search-inp').addEventListener('input', e => {
+    searchQ = e.target.value;
+    renderProducts();
+  });
+
+  // Sort
+  document.getElementById('sort-select').addEventListener('change', e => {
+    sortVal = e.target.value;
+    renderProducts();
+  });
+
+  // Categories
+  document.querySelectorAll('.cat-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      selectedCat = pill.dataset.cat;
+      renderProducts();
+      scrollToSec('products');
     });
-    
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    message += `--------------------------\n`;
-    message += `*الإجمالي:* ${total} ر.س\n\n`;
-    message += `أود تأكيد هذا الطلب، شكراً لكم.`;
+  });
 
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-    
-    // Optional: Clear cart after checkout
-    // cart = [];
-    // updateCartUI();
-    // saveCart();
+  // Cart
+  document.getElementById('cart-toggle').addEventListener('click', openCartDrawer);
+  document.getElementById('close-cart').addEventListener('click', closeCartDrawer);
+  document.getElementById('overlay').addEventListener('click', () => { closeCartDrawer(); closeModal(); });
+  document.getElementById('checkout-btn').addEventListener('click', checkoutWA);
+
+  // Modal
+  document.getElementById('close-modal').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
+  document.getElementById('modal-wa-btn').addEventListener('click', () => { if(currentProduct) buyWA(currentProduct.id); });
+  document.getElementById('modal-cart-btn').addEventListener('click', () => { if(currentProduct) { addToCart(currentProduct.id); closeModal(); } });
 }
 
-// Global Functions
-window.updateQuantity = updateQuantity;
-window.removeFromCart = removeFromCart;
-window.addToCart = addToCart;
+/* ===================== SCROLL EFFECTS ===================== */
+function initScrollEffects() {
+  const header = document.getElementById('main-header');
+  const backTop = document.getElementById('back-top');
+  const progress = document.getElementById('scroll-progress');
 
-window.buyViaWhatsApp = (name, price) => {
-    const phoneNumber = "201068300432";
-    const message = encodeURIComponent(`مرحباً متجر الريان، أود شراء المنتج: ${name} بسعر ${price} ر.س`);
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-};
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    header.classList.toggle('scrolled', sy > 50);
+    backTop.classList.toggle('show', sy > 400);
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (sy/docH*100) + '%';
+  }, {passive:true});
 
-window.scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
+  // Intersection observer for fade-up
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold:0.12});
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+}
+
+/* ===================== COUNTDOWN ===================== */
+function startCountdown() {
+  let s = 5 * 3600 + 22 * 60 + 48;
+  const tick = () => {
+    const h = Math.floor(s/3600);
+    const m = Math.floor((s%3600)/60);
+    const sec = s%60;
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(sec).padStart(2,'0');
+    if(s > 0) { s--; setTimeout(tick, 1000); }
+  };
+  tick();
+}
+
+/* ===================== SOCIAL PROOF ===================== */
+function startNotifications() {
+  const names = ['أحمد','سارة','فهد','منيرة','خالد','نورة','عبدالله','رنا'];
+  const cities = ['الرياض','جدة','الدمام','مكة','المدينة','الخبر'];
+  const bought = products.map(p => p.name);
+  const show = () => {
+    const name = names[Math.floor(Math.random()*names.length)];
+    const city = cities[Math.floor(Math.random()*cities.length)];
+    const prod = bought[Math.floor(Math.random()*bought.length)];
+    document.getElementById('notif-text').textContent = `${name} من ${city} اشترى للتو`;
+    document.getElementById('notif-product').textContent = prod;
+    const notif = document.getElementById('notification');
+    notif.classList.add('show');
+    setTimeout(() => { notif.classList.remove('show'); setTimeout(show, Math.random()*8000+7000); }, 4000);
+  };
+  setTimeout(show, 5000);
+}
+
+/* ===================== GLOBAL HELPERS ===================== */
+window.scrollToSec = (id) => {
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
 };
 
 window.resetApp = () => {
-    searchQuery = '';
-    selectedCategory = 'الكل';
-    searchInput.value = '';
-    searchInput.classList.remove('active');
-    categoryCards.forEach(c => {
-        c.classList.remove('active');
-        if (c.dataset.category === 'الكل') c.classList.add('active');
-    });
-    renderProducts();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  searchQ = ''; selectedCat = 'الکل';
+  document.getElementById('search-inp').value = '';
+  document.querySelectorAll('.cat-pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.cat==='الکل');
+  });
+  // fix for Arabic 'ک' vs 'ك'
+  selectedCat = 'الكل';
+  document.querySelectorAll('.cat-pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.cat==='الكل');
+  });
+  sortVal = 'default';
+  document.getElementById('sort-select').value = 'default';
+  renderProducts();
+  window.scrollTo({top:0,behavior:'smooth'});
 };
 
-// Start
-document.addEventListener('DOMContentLoaded', init);
+window.addToCart = addToCart;
+window.buyWA = buyWA;
+window.changeQty = changeQty;
+window.removeFromCart = removeFromCart;
+window.toggleWL = toggleWL;
