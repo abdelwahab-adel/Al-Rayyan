@@ -960,7 +960,7 @@ background:
         overflow-y:auto;
         border-radius:var(--radius-lg);
       }
-      .modal-img-side { min-height:260px; max-height:300px; }
+      .modal-img-side {height: 350px; }
       .modal-info-side { padding:24px; max-height:none; }
       .modal-name { font-size:20px; }
       .modal-price { font-size:28px; }
