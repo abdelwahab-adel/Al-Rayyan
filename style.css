@@ -173,8 +173,6 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-           background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("img/photo-1441986300917-64674bd600d8.avif");
-
     }
     .hero-orb {
       position:absolute; border-radius:50%;
@@ -948,24 +946,103 @@
       .feature-item:nth-child(odd) { border-left:1px solid var(--gray-200); }
       .about-grid { grid-template-columns:1fr; }
       .about-badge { display:none; }
-      .modal-box { grid-template-columns:1fr; }
-      .desc-side { min-height:280px; }
+      /* Modal: stack vertically on tablet */
+      .modal-box {
+        grid-template-columns:1fr;
+        max-height:92vh;
+        overflow-y:auto;
+        border-radius:var(--radius-lg);
+      }
+      .modal-img-side { min-height:260px; max-height:300px; }
+      .modal-info-side { padding:24px; max-height:none; }
+      .modal-name { font-size:20px; }
+      .modal-price { font-size:28px; }
     }
+
     @media(max-width:768px) {
       nav { display:none; }
-      .search-box input { width:120px; }
-      .hero { min-height:70vh; }
-      .hero-stats { flex-wrap:wrap; gap:20px; }
-      .features-grid { grid-template-columns:1fr; }
-      .footer-top { grid-template-columns:1fr; }
-      .contact-cta { padding:36px 24px; flex-direction:column; text-align:center; }
-      .footer-bottom { flex-direction:column; text-align:center; }
+      /* Header: اختصر مربع البحث */
+      .search-box input { width:100px; }
+      .hero { min-height:auto; padding:60px 0; }
+      .hero-stats { flex-wrap:wrap; gap:16px; }
+      .hero-stat .num { font-size:22px; }
+      .features-grid { grid-template-columns:1fr 1fr; }
+      .feature-item { border-left:none; border-bottom:1px solid var(--gray-200); padding:20px 16px; }
+      .feature-item:nth-child(odd) { border-left:none; }
+      .footer-top { grid-template-columns:1fr; gap:28px; }
+      .contact-cta { padding:32px 20px; flex-direction:column; text-align:center; gap:24px; }
+      .footer-bottom { flex-direction:column; text-align:center; gap:10px; }
+      /* Cart drawer: عرض كامل */
       .cart-drawer { width:100%; right:-100%; }
+      /* Reviews: عمود واحد */
+      .reviews-grid { grid-template-columns:1fr; }
+      /* About vals: عمود واحد */
+      .about-vals { flex-direction:column; gap:12px; }
+      /* Modal على الموبايل: bottom sheet */
+      .modal-overlay {
+        align-items:flex-end;
+        padding:0;
+      }
+      .modal-box {
+        border-radius:var(--radius-xl) var(--radius-xl) 0 0;
+        max-height:92vh;
+        overflow-y:auto;
+        width:100%;
+        max-width:100%;
+      }
+      .modal-img-side {
+        min-height:220px;
+        max-height:240px;
+      }
+      .modal-img-side img { object-position:center top; }
+      .modal-info-side { padding:20px 20px 32px; }
+      .modal-name { font-size:18px; margin-bottom:10px; }
+      .modal-price { font-size:26px; }
+      .modal-desc { font-size:14px; margin-bottom:16px; }
+      .modal-price-note { margin-bottom:20px; }
+      .btn-wa-full, .btn-cart-full { padding:13px; font-size:14px; }
+      /* Hero text */
+      .hero-ctas { flex-direction:column; }
+      .btn-gold, .btn-outline-white { width:100%; justify-content:center; }
     }
+
     @media(max-width:480px) {
-      .header-content { padding:0 16px; height:60px; }
-      .hero h1 { font-size:28px; }
-      .products-grid { grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; }
-      .product-img-wrap { height:200px; }
+      .header-content { padding:0 12px; height:58px; }
+      /* إخفاء صندوق البحث في الهيدر واستبداله بأيقونة */
+      #search-box-desktop { display:none !important; }
+      #mobile-search-btn { display:flex !important; }
+      /* صندوق البحث في شريط الموبايل يظهر كامل العرض */
+      #mobile-search-bar .search-box { display:flex !important; }
+      .logo { font-size:22px; }
+      .hero h1 { font-size:26px; }
+      .hero p { font-size:15px; }
+      .section { padding:48px 0; }
+      .section-head { margin-bottom:28px; }
+      .section-head-left h2 { font-size:22px; }
+      .products-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+      .product-img-wrap { height:180px; }
+      .product-body { padding:14px; }
+      .product-body h3 { font-size:13px; }
+      .price-main { font-size:18px; }
+      /* Features: عمود واحد */
+      .features-grid { grid-template-columns:1fr; }
+      .feature-item { border-left:none !important; border-bottom:1px solid var(--gray-200); }
+      /* Categories: تصغير الـ pills */
+      .cat-pill { padding:10px 14px; font-size:13px; }
+      /* Modal */
+      .modal-img-side { min-height:190px; max-height:200px; }
+      .modal-info-side { padding:16px 16px 28px; }
+      .modal-name { font-size:16px; }
+      .modal-price { font-size:22px; }
+      /* Notification */
+      .notification { left:12px; right:12px; max-width:none; }
+      /* FAB */
+      .whatsapp-fab { bottom:20px; left:16px; width:50px; height:50px; font-size:22px; }
+      .back-top { bottom:20px; right:16px; width:42px; height:42px; }
+      /* Footer */
+      .footer-bottom-links { flex-wrap:wrap; justify-content:center; gap:12px; }
+      /* Cta section */
+      .contact-cta { border-radius:var(--radius-lg); }
+      .cta-text h2 { font-size:22px; }
     }
   
