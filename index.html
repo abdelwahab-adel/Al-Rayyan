@@ -1,243 +1,423 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>متجر الريان - أناقة وجودة</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <div class="container header-content">
-        <div class="logo" onclick="resetApp()">
-          <span class="al">الـ</span><span class="rayyan">ريان</span>
-        </div>
-        <nav>
-          <ul>
-            <li><button onclick="resetApp()">الرئيسية</button></li>
-            <li><button onclick="scrollToSection('products')">المنتجات</button></li>
-            <li><button onclick="scrollToSection('categories')">الأقسام</button></li>
-            <li><button onclick="scrollToSection('about')">من نحن</button></li>
-            <li><button onclick="scrollToSection('contact')">اتصل بنا</button></li>
-          </ul>
-        </nav>
-        <div class="header-actions">
-          <div class="search-container">
-            <input type="text" id="search-input" placeholder="ابحث عن منتج...">
-            <button class="action-btn" id="search-btn"><i class="fas fa-search"></i></button>
-          </div>
-          <button class="action-btn cart-btn" id="open-cart">
-            <i class="fas fa-shopping-bag"></i>
-            <span class="cart-count" id="cart-count">0</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>متجر الريان — أناقة وجودة لا مثيل لها</title>
+  <meta name="desc" content="متجر الريان: وجهتكم للتسوق الفاخر. أجهزة، أثاث، إلكترونيات بجودة عالمية وتوصيل سريع.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+  <div class="container" style="overflow:hidden;">
+    <div class="trust-bar-inner" id="trust-bar-inner">
+      <span class="trust-item"><i class="fas fa-shipping-fast"></i> توصيل سريع لجميع أنحاء المملكة</span>
+      <span class="trust-item"><i class="fas fa-shield-alt"></i> ضمان حقيقي على جميع المنتجات</span>
+      <span class="trust-item"><i class="fas fa-undo"></i> إرجاع مجاني خلال 14 يوم</span>
+      <span class="trust-item"><i class="fas fa-headset"></i> دعم عملاء 24/7 عبر واتساب</span>
+      <span class="trust-item"><i class="fas fa-lock"></i> دفع آمن ومشفر 100%</span>
+      <!-- duplicate for seamless loop -->
+      <span class="trust-item"><i class="fas fa-shipping-fast"></i> توصيل سريع لجميع أنحاء المملكة</span>
+      <span class="trust-item"><i class="fas fa-shield-alt"></i> ضمان حقيقي على جميع المنتجات</span>
+      <span class="trust-item"><i class="fas fa-undo"></i> إرجاع مجاني خلال 14 يوم</span>
+      <span class="trust-item"><i class="fas fa-headset"></i> دعم عملاء 24/7 عبر واتساب</span>
+      <span class="trust-item"><i class="fas fa-lock"></i> دفع آمن ومشفر 100%</span>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="main-header">
+  <div class="header-content">
+    <div class="logo" onclick="resetApp()">
+      <span class="al">الـ</span><span class="rayyan">ريان</span>
+    </div>
+    <nav>
+      <ul>
+        <li><button onclick="resetApp()">الرئيسية</button></li>
+        <li><button onclick="scrollToSec('products')">المنتجات</button></li>
+        <li><button onclick="scrollToSec('categories')">الأقسام</button></li>
+        <li><button onclick="scrollToSec('about')">من نحن</button></li>
+        <li><button onclick="scrollToSec('contact')">اتصل بنا</button></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <div class="search-box">
+        <button onclick="document.getElementById('search-inp').focus()"><i class="fas fa-search"></i></button>
+        <input type="text" id="search-inp" placeholder="ابحث عن منتج...">
+      </div>
+      <button class="icon-btn" onclick="openWishlistView()" title="المفضلة">
+        <i class="far fa-heart"></i>
+        <span class="badge badge-red" id="wl-count" style="display:none">0</span>
+      </button>
+      <button class="icon-btn" id="cart-toggle" title="السلة">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="badge" id="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Cart Drawer -->
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-head">
+    <div style="display:flex;align-items:center;gap:10px">
+      <h3>سلة التسوق</h3>
+      <span class="cart-head-count" id="cart-head-count">0</span>
+    </div>
+    <button class="close-drawer" id="close-cart"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-foot">
+    <div class="cart-total-row">
+      <span>الإجمالي</span>
+      <span class="cart-total-val"><span id="cart-total">0</span> ر.س</span>
+    </div>
+    <button class="checkout-btn" id="checkout-btn">
+      <i class="fab fa-whatsapp"></i> إتمام الطلب عبر واتساب
+    </button>
+  </div>
+</div>
+
+<!-- Product Modal -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-img-side">
+      <img id="modal-img" src="" alt="">
+      <button class="close-modal" id="close-modal"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-info-side">
+      <div class="modal-cat" id="modal-cat"></div>
+      <div class="modal-name" id="modal-name"></div>
+      <div class="modal-stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+        <span>(4.5 / 5)</span>
+      </div>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-price" id="modal-price"></div>
+      <p class="modal-price-note">السعر شامل الضريبة • توصيل سريع</p>
+      <div class="modal-btns">
+        <button class="btn-wa-full" id="modal-wa-btn">
+          <i class="fab fa-whatsapp"></i> شراء الآن عبر واتساب
+        </button>
+        <button class="btn-cart-full" id="modal-cart-btn">
+          <i class="fas fa-shopping-bag"></i> أضف للسلة
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Social Proof Notification -->
+<div class="notification" id="notification">
+  <div class="notification-icon"><i class="fas fa-check"></i></div>
+  <div class="notification-text">
+    <strong id="notif-text">أحمد من الرياض اشترى للتو</strong>
+    <span id="notif-product">ثلاجة سامسونج</span>
+  </div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-content-wrap">
+      <div class="hero-text">
+        <div class="hero-label">✦ وجهتكم الأولى للتسوق الفاخر</div>
+        <h1>الريان: واجهتكم<br>لـ<em>الأناقة والجودة</em></h1>
+        <p>نقدم أفضل المنتجات المختارة بعناية لتناسب ذوقكم الرفيع، مع ضمان حقيقي وتوصيل سريع لباب منزلكم.</p>
+        <div class="hero-ctas">
+          <button class="btn-gold" onclick="scrollToSec('products')">
+            <i class="fas fa-bag-shopping"></i> تسوق الآن
+          </button>
+          <button class="btn-outline-white" onclick="scrollToSec('about')">
+            <i class="fas fa-play-circle"></i> اعرف أكثر
           </button>
         </div>
-      </div>
-    </header>
-
-    <!-- Shopping Cart Drawer -->
-    <div id="cart-drawer" class="cart-drawer">
-        <div class="cart-drawer-content">
-            <div class="cart-header">
-                <h3>سلة التسوق</h3>
-                <button id="close-cart" class="close-btn">&times;</button>
-            </div>
-            <div id="cart-items-container" class="cart-items">
-                <!-- Cart items will be injected here -->
-                <div class="empty-cart-msg">السلة فارغة حالياً</div>
-            </div>
-            <div class="cart-footer">
-                <div class="cart-total">
-                    <span>الإجمالي:</span>
-                    <span id="cart-total-value">0</span> <span>ر.س</span>
-                </div>
-                <button id="checkout-btn" class="btn-primary checkout-btn">
-                    <i class="fab fa-whatsapp"></i> إتمام الطلب عبر واتساب
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <main>
-      <!-- Hero -->
-      <section class="hero">
-        <div class="container">
-          <div class="hero-content" >
-            <h1>الريان: واجهتكم <span>للأناقة والجودة</span></h1>
-            <p>نقدم لكم أفضل المنتجات المختارة بعناية لتناسب ذوقكم الرفيع. تسوقوا الآن واستمتعوا بتجربة فريدة  بضمان حقيقي وتوصيل سريع.</p>
-            <button class="btn-primary" onclick="scrollToSection('products')">تسوق الآن</button>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num">+2,000</div>
+            <div class="label">عميل راضٍ</div>
           </div>
-        </div>
-      </section>
-
-      <!-- Categories -->
-      <section id="categories" class="section-padding">
-        <div class="container">
-          <div class="section-header">
-            <h2>تسوق حسب الأقسام</h2>
-            <p>اكتشف مجموعتنا الواسعة من المنتجات المصنفة لتسهيل عملية البحث.</p>
+          <div class="hero-stat">
+            <div class="num">11+</div>
+            <div class="label">منتج مختار</div>
           </div>
-          <div class="categories-grid">
-            <div class="category-card active" data-category="الكل">
-              <i class="fas fa-th-large"></i>
-              <h3>الكل</h3>
-              <span>11 منتج</span>
-            </div>
-            <div class="category-card" data-category="أجهزة كهربائية">
-              <i class="fas fa-plug"></i>
-              <h3>أجهزة كهربائية</h3>
-              <span>3 منتج</span>
-            </div>
-            <div class="category-card" data-category="أثاث">
-              <i class="fas fa-couch"></i>
-              <h3>أثاث</h3>
-              <span>3 منتج</span>
-            </div>
-            <div class="category-card" data-category="إلكترونيات">
-              <i class="fas fa-mobile-alt"></i>
-              <h3>إلكترونيات</h3>
-              <span>2 منتج</span>
-            </div>
-            <div class="category-card" data-category="أدوات منزلية">
-              <i class="fas fa-blender"></i>
-              <h3>أدوات منزلية</h3>
-              <span>2 منتج</span>
-            </div>
-            <div class="category-card" data-category="سلع استهلاكية">
-              <i class="fas fa-shopping-basket"></i>
-              <h3>سلع استهلاكية</h3>
-              <span>1 منتج</span>
-            </div>
+          <div class="hero-stat">
+            <div class="num">4.9★</div>
+            <div class="label">تقييم العملاء</div>
           </div>
-        </div>
-      </section>
-
-      <!-- Products -->
-      <section id="products" class="section-padding products-section">
-        <div class="container">
-          <div class="section-header" style="text-align: right; border-right: 5px solid var(--brand-gold); padding-right: 20px;">
-            <h2 id="products-title">أحدث المنتجات</h2>
-          </div>
-          <div class="products-grid" id="products-grid">
-            <!-- Products will be injected here by script.js -->
-          </div>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section id="about" class="section-padding about-section">
-        <div class="container">
-          <div class="about-content">
-            <div class="about-img">
-              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800" alt="من نحن" referrerPolicy="no-referrer">
-            </div>
-            <div class="about-text">
-              <h2>من نحن</h2>
-              <h3 style="color: var(--brand-gold); margin-bottom: 20px;">قصة متجر الريان: حيث تلتقي الجودة بالأصالة</h3>
-              <p>بدأنا كمتجر عائلي صغير، واليوم نحن فخورون بخدمة آلاف العائلات في السعودية. هدفنا هو توفير أفضل المنتجات العالمية بأسعار تنافسية، مع ضمان تجربة تسوق مريحة تبدأ من هاتفك وتنتهي عند باب منزلك.</p>
-              <div style="display: flex; gap: 20px;">
-                <div>
-                  <h4 style="margin-bottom: 5px;">رؤيتنا</h4>
-                  <p style="font-size: 14px;">أن نكون المتجر الرائد في تقديم تجربة تسوق استثنائية.</p>
-                </div>
-                <div>
-                  <h4 style="margin-bottom: 5px;">قيمنا</h4>
-                  <p style="font-size: 14px;">الصدق، الجودة، والالتزام برضا العميل أولاً.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="contact-section">
-        <div class="container">
-          <div class="contact-card">
-            <div class="contact-info">
-              <h2>هل لديك أي استفسار؟</h2>
-              <p>فريق خدمة العملاء لدينا جاهز للرد على جميع تساؤلاتكم عبر واتساب.</p>
-            </div>
-            <div class="contact-btns">
-              <button class="btn-primary" style="background: #25d366; color: white;" onclick="window.open('https://wa.me/201068300432', '_blank')">
-                <i class="fab fa-whatsapp"></i> تحدث معنا عبر واتساب
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <div class="logo" style="margin-bottom: 20px;">
-              <span style="color: white;">الـ</span><span class="rayyan">ريان</span>
-            </div>
-            <p>متجر الريان هو وجهتكم الأولى للتسوق الإلكتروني، حيث نجمع بين الجودة العالية والتصاميم العصرية.</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h4>روابط سريعة</h4>
-            <ul class="footer-links">
-              <li><a href="#" onclick="resetApp()">الرئيسية</a></li>
-              <li><a href="#" onclick="scrollToSection('products')">المنتجات</a></li>
-              <li><a href="#" onclick="scrollToSection('categories')">الأقسام</a></li>
-              <li><a href="#" onclick="scrollToSection('about')">من نحن</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>تواصل معنا</h4>
-            <ul class="contact-list">
-              <li><i class="fas fa-map-marker-alt"></i> الرياض السعودي </li>
-              <li><i class="fas fa-phone"></i> +20 10 68300432</li>
-              <li><i class="fas fa-envelope"></i> info@alrayyan.com</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>جميع الحقوق محفوظة لمتجر الريان &copy; 2026</p>
         </div>
       </div>
-    </footer>
-
-    <!-- Product Detail Modal -->
-    <div id="product-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <div class="modal-img">
-                    <img id="modal-product-image" src="" alt="" referrerPolicy="no-referrer">
-                </div>
-                <div class="modal-info">
-                    <h2 id="modal-product-name"></h2>
-                    <span id="modal-product-category" class="product-badge"></span>
-                    <p id="modal-product-description"></p>
-                    <span class="product-price"><span id="modal-product-price"></span> <span>ر.س</span></span>
-                    <div class="product-actions">
-                        <button id="modal-buy-btn" class="btn-primary" style="background: #25d366; color: white; width: 100%;">
-                            <i class="fab fa-whatsapp"></i> شراء عبر واتساب
-                        </button>
-                    </div>
-                </div>
+      <div class="hero-visual">
+        <div class="flash-banner">
+          <div class="flash-left">
+            <i class="fas fa-bolt"></i>
+            <div>
+              <div class="flash-title">عرض فلاش! خصم 15% على أثاث المودرن</div>
+              <div class="flash-sub">ينتهي العرض قريباً</div>
             </div>
+          </div>
+          <div class="countdown" id="countdown">
+            <div class="cd-block"><div class="cd-num" id="cd-h">05</div><div class="cd-label">ساعة</div></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-block"><div class="cd-num" id="cd-m">22</div><div class="cd-label">دقيقة</div></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-block"><div class="cd-num" id="cd-s">48</div><div class="cd-label">ثانية</div></div>
+          </div>
         </div>
+        <div class="hero-feature-cards">
+          <div class="hfc">
+            <i class="fas fa-shipping-fast"></i>
+            <h4>توصيل سريع</h4>
+            <p>خلال 24-48 ساعة</p>
+          </div>
+          <div class="hfc">
+            <i class="fas fa-shield-check"></i>
+            <h4>ضمان أصلي</h4>
+            <p>على جميع المنتجات</p>
+          </div>
+          <div class="hfc featured">
+            <i class="fab fa-whatsapp" style="color:var(--green-wa)"></i>
+            <div>
+              <h4>طلب بضغطة واحدة</h4>
+              <p>تواصل مباشر عبر واتساب بدون تعقيد</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <script src="script.js"></script>
-  </body>
+  <!-- FEATURES STRIP -->
+  <div class="features-strip">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+          <div><h4>توصيل مجاني</h4><p>للطلبات فوق 200 ر.س</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-undo-alt"></i></div>
+          <div><h4>إرجاع مجاني</h4><p>خلال 14 يوم بدون شروط</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <div><h4>دفع آمن</h4><p>تشفير SSL معتمد</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <div><h4>دعم 24/7</h4><p>فريقنا دائماً معك</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head fade-up">
+        <div class="section-head-left">
+          <h2>تسوق حسب الأقسام</h2>
+          <p>اختر القسم الذي يناسبك لعرض المنتجات المخصصة</p>
+        </div>
+      </div>
+      <div class="categories-row fade-up" id="cats-row">
+        <div class="cat-pill active" data-cat="الكل"><i class="fas fa-th-large"></i> الكل <span class="cnt">11</span></div>
+        <div class="cat-pill" data-cat="أجهزة كهربائية"><i class="fas fa-plug"></i> أجهزة كهربائية <span class="cnt">3</span></div>
+        <div class="cat-pill" data-cat="أثاث"><i class="fas fa-couch"></i> أثاث <span class="cnt">3</span></div>
+        <div class="cat-pill" data-cat="إلكترونيات"><i class="fas fa-mobile-alt"></i> إلكترونيات <span class="cnt">2</span></div>
+        <div class="cat-pill" data-cat="أدوات منزلية"><i class="fas fa-blender"></i> أدوات منزلية <span class="cnt">2</span></div>
+        <div class="cat-pill" data-cat="سلع استهلاكية"><i class="fas fa-shopping-basket"></i> سلع استهلاكية <span class="cnt">1</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section section-alt" id="products">
+    <div class="container">
+      <div class="section-head fade-up">
+        <div class="section-head-left">
+          <h2 id="products-title">أحدث المنتجات</h2>
+          <p id="products-sub">مجموعة مختارة بعناية لتناسب ذوقكم</p>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <select id="sort-select" style="padding:10px 16px;border-radius:50px;border:1.5px solid var(--gray-200);font-family:inherit;font-size:14px;outline:none;cursor:pointer;background:white;font-weight:600;">
+            <option value="default">الترتيب الافتراضي</option>
+            <option value="price-asc">السعر: الأقل أولاً</option>
+            <option value="price-desc">السعر: الأعلى أولاً</option>
+            <option value="name">الاسم</option>
+          </select>
+        </div>
+      </div>
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section-head fade-up">
+        <div class="section-head-left">
+          <h2>ما يقوله عملاؤنا</h2>
+          <p>آراء حقيقية من عملاء حقيقيين</p>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card fade-up">
+          <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">تجربة تسوق رائعة! الطقم وصل بحالة ممتازة والجودة تفوق التوقعات. شكراً لمتجر الريان على الاحترافية.</p>
+          <div class="review-author">
+            <div class="review-avatar">أ</div>
+            <div><div class="review-author-name">أحمد المالكي</div><div class="review-author-tag">الرياض • أثاث المودرن</div></div>
+          </div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">الثلاجة ممتازة وبسعر مناسب جداً. التوصيل كان سريع والتغليف محكم. سأعود للشراء مرة أخرى بالتأكيد.</p>
+          <div class="review-author">
+            <div class="review-avatar">م</div>
+            <div><div class="review-author-name">منيرة الشهري</div><div class="review-author-tag">جدة • ثلاجة سامسونج</div></div>
+          </div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="review-text">سماعة الـ cardoO خيال! الصوت عميق والبطارية تدوم طويلاً. التواصل عبر الواتساب كان سلس وسريع.</p>
+          <div class="review-author">
+            <div class="review-avatar">ف</div>
+            <div><div class="review-author-name">فهد العتيبي</div><div class="review-author-tag">الدمام • سماعات cardoO</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section section-alt" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap fade-up">
+          <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&q=80&w=800" alt="من نحن" referrerpolicy="no-referrer">
+          <div class="about-badge">
+            <div class="num">+2K</div>
+            <div class="lbl">عميل سعيد</div>
+          </div>
+        </div>
+        <div class="about-text fade-up">
+          <h2>قصتنا</h2>
+          <h3>حيث تلتقي الجودة بالأصالة</h3>
+          <p>بدأنا كمتجر عائلي صغير، واليوم نحن فخورون بخدمة آلاف العائلات في السعودية. هدفنا توفير أفضل المنتجات العالمية بأسعار تنافسية مع تجربة تسوق مريحة تبدأ من هاتفك وتنتهي عند باب منزلك.</p>
+          <div class="about-vals">
+            <div class="about-val">
+              <h4>رؤيتنا</h4>
+              <p>أن نكون المتجر الرائد في تقديم تجربة تسوق استثنائية ولا مثيل لها.</p>
+            </div>
+            <div class="about-val">
+              <h4>قيمنا</h4>
+              <p>الصدق، الجودة، والالتزام برضا العميل في كل خطوة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-cta fade-up">
+        <div class="cta-text">
+          <h2>هل لديك أي استفسار؟</h2>
+          <p>فريق خدمة العملاء لدينا جاهز للرد على جميع تساؤلاتكم على مدار الساعة.</p>
+        </div>
+        <a href="https://wa.me/201068300432" target="_blank" class="btn-wa-cta">
+          <i class="fab fa-whatsapp"></i> تحدث معنا عبر واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="al" style="color:white">الـ</span><span class="rayyan">ريان</span>
+        </div>
+        <p>متجر الريان هو وجهتكم الأولى للتسوق الإلكتروني، نجمع بين الجودة العالية والتصاميم العصرية لنقدم تجربة استثنائية.</p>
+        <div class="socials">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/201068300432" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="resetApp()"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+          <li><a href="#" onclick="scrollToSec('products')"><i class="fas fa-chevron-left"></i> المنتجات</a></li>
+          <li><a href="#" onclick="scrollToSec('categories')"><i class="fas fa-chevron-left"></i> الأقسام</a></li>
+          <li><a href="#" onclick="scrollToSec('about')"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+          <li><a href="#" onclick="scrollToSec('contact')"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>سياساتنا</h4>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+          <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الشحن</a></li>
+          <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الإرجاع</a></li>
+          <li><a href="#"><i class="fas fa-chevron-left"></i> الشروط والأحكام</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <ul class="contact-links">
+          <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+          <li><i class="fas fa-phone"></i> +20 10 68300432</li>
+          <li><i class="fas fa-envelope"></i> info@alrayyan.com</li>
+          <li><i class="fab fa-whatsapp"></i> متاح 24/7 عبر واتساب</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>جميع الحقوق محفوظة لمتجر الريان © 2026</span>
+      <div class="footer-bottom-links">
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">الشروط والأحكام</a>
+        <a href="#">اتصل بنا</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/201068300432" target="_blank" class="whatsapp-fab" title="تواصل عبر واتساب">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Back to top -->
+<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
 </html>
-
