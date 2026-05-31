@@ -1026,7 +1026,7 @@ background:
       .section { padding:48px 0; }
       .section-head { margin-bottom:28px; }
       .section-head-left h2 { font-size:22px; }
-      .products-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+      .products-grid { grid-template-columns:repeat(1,1fr); gap:12px; }
       .product-img-wrap { height:180px; }
       .product-body { padding:14px; }
       .product-body h3 { font-size:13px; }
