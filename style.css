@@ -26,7 +26,7 @@
       --ease: cubic-bezier(0.4,0,0.2,1);
       --transition: all 0.32s var(--ease);
     }
-
+ 
     /* ===================== RESET & BASE ===================== */
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
@@ -42,12 +42,12 @@
     ul { list-style:none; }
     button { cursor:pointer; border:none; background:none; font-family:inherit; }
     img { max-width:100%; display:block; }
-
+ 
     /* ===================== SCROLLBAR ===================== */
     ::-webkit-scrollbar { width:6px; }
     ::-webkit-scrollbar-track { background:#f1f0ec; }
     ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:3px; }
-
+ 
     /* ===================== TRUST BAR ===================== */
     .trust-bar {
       background: var(--navy);
@@ -70,7 +70,7 @@
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
-
+ 
     /* ===================== HEADER ===================== */
     header {
       background: rgba(255,255,255,0.97);
@@ -164,7 +164,7 @@
       border: 2px solid white;
     }
     .badge-red { background: var(--red); }
-
+ 
     /* ===================== HERO ===================== */
     .hero {
       position: relative;
@@ -179,7 +179,7 @@ background:
         url('img/photo-1441986300917-64674bd600d8.avif');
     background-size: cover;
     background-position: center;
-
+ 
     }
     .hero-orb {
       position:absolute; border-radius:50%;
@@ -199,7 +199,7 @@ background:
     }
     @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-40px)} }
     @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,30px)} }
-
+ 
     .hero-grid-lines {
       position:absolute; inset:0; pointer-events:none;
       background-image: linear-gradient(rgba(197,160,89,0.04) 1px, transparent 1px),
@@ -287,7 +287,7 @@ background:
       background-clip:text;
     }
     .hero-stat .label { font-size:13px; color:rgba(255,255,255,0.55); margin-top:2px; }
-
+ 
     /* Hero visual card */
     .hero-visual {
       position:relative; display:flex; flex-direction:column; gap:16px;
@@ -316,7 +316,7 @@ background:
     .hfc.featured i { font-size:30px; }
     .hfc.featured h4 { font-size:16px; }
     .hfc.featured p { font-size:13px; }
-
+ 
     /* Flash sale countdown */
     .flash-banner {
       background:linear-gradient(135deg,#e05555 0%,#c0392b 100%);
@@ -343,7 +343,7 @@ background:
     .cd-num { font-size:22px; font-weight:900; line-height:1; }
     .cd-label { font-size:10px; color:rgba(255,255,255,0.7); margin-top:2px; }
     .cd-sep { font-size:20px; font-weight:900; color:rgba(255,255,255,0.5); margin-top:-4px; }
-
+ 
     /* ===================== SECTIONS ===================== */
     .container { max-width:1280px; margin:0 auto; padding:0 24px; }
     .section { padding:80px 0; }
@@ -372,7 +372,7 @@ background:
       border-radius:50px; transition:var(--transition);
     }
     .see-all:hover { background:var(--gold); color:white; }
-
+ 
     /* ===================== CATEGORIES ===================== */
     .categories-row {
       display:flex; gap:14px; overflow-x:auto; padding-bottom:8px;
@@ -404,7 +404,7 @@ background:
     }
     .cat-pill.active i { color:var(--gold-light); }
     .cat-pill.active .cnt { background:rgba(255,255,255,0.15); color:white; }
-
+ 
     /* ===================== PRODUCT GRID ===================== */
     .products-grid {
       display:grid;
@@ -524,7 +524,7 @@ background:
     }
     .empty-state i { font-size:56px; margin-bottom:20px; display:block; }
     .empty-state h3 { font-size:20px; font-weight:700; color:var(--navy); margin-bottom:8px; }
-
+ 
     /* ===================== SOCIAL PROOF ===================== */
     .notification {
       position:fixed; bottom:90px; left:24px;
@@ -550,7 +550,7 @@ background:
     .notification-icon i { color:var(--green-wa); }
     .notification-text strong { display:block; font-weight:700; color:var(--navy); }
     .notification-text span { color:var(--gray-600); }
-
+ 
     /* ===================== FEATURES STRIP ===================== */
     .features-strip {
       background:white;
@@ -580,7 +580,7 @@ background:
     .feature-icon i { font-size:20px; color:var(--gold); }
     .feature-item h4 { font-size:14px; font-weight:800; margin-bottom:3px; }
     .feature-item p { font-size:12px; color:var(--gray-600); }
-
+ 
     /* ===================== TESTIMONIALS ===================== */
     .reviews-grid {
       display:grid;
@@ -612,7 +612,7 @@ background:
     }
     .review-author-name { font-weight:700; font-size:14px; }
     .review-author-tag { font-size:12px; color:var(--gray-400); }
-
+ 
     /* ===================== CART DRAWER ===================== */
     .overlay {
       position:fixed; inset:0;
@@ -703,7 +703,7 @@ background:
       transition:var(--transition);
     }
     .checkout-btn:hover { background:#1da854; transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,211,102,0.35); }
-
+ 
     /* ===================== PRODUCT MODAL ===================== */
     .modal-overlay {
       position:fixed; inset:0;
@@ -772,7 +772,7 @@ background:
       transition:var(--transition);
     }
     .btn-cart-full:hover { background:var(--navy-light); }
-
+ 
     /* ===================== ABOUT ===================== */
     .about-grid {
       display:grid; grid-template-columns:1fr 1fr;
@@ -807,7 +807,7 @@ background:
     }
     .about-val h4 { font-size:15px; font-weight:800; margin-bottom:6px; }
     .about-val p { font-size:13px; color:var(--gray-600); }
-
+ 
     /* ===================== CONTACT CTA ===================== */
     .contact-cta {
       background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);
@@ -837,7 +837,7 @@ background:
       box-shadow:0 8px 24px rgba(37,211,102,0.3);
     }
     .btn-wa-cta:hover { background:#1da854; transform:translateY(-3px); }
-
+ 
     /* ===================== FOOTER ===================== */
     footer {
       background:var(--navy);
@@ -890,7 +890,7 @@ background:
     .footer-bottom-links { display:flex; gap:20px; }
     .footer-bottom-links a { color:rgba(255,255,255,0.35); transition:var(--transition); }
     .footer-bottom-links a:hover { color:var(--gold); }
-
+ 
     /* ===================== FAB WHATSAPP ===================== */
     .whatsapp-fab {
       position:fixed; bottom:28px; left:28px;
@@ -909,7 +909,7 @@ background:
       0%,100%{box-shadow:0 8px 24px rgba(37,211,102,0.45)}
       50%{box-shadow:0 8px 40px rgba(37,211,102,0.7)}
     }
-
+ 
     /* ===================== BACK TO TOP ===================== */
     .back-top {
       position:fixed; bottom:28px; right:28px;
@@ -925,7 +925,7 @@ background:
     }
     .back-top.show { opacity:1; visibility:visible; }
     .back-top:hover { background:var(--gold); transform:translateY(-3px); }
-
+ 
     /* ===================== SCROLL PROGRESS ===================== */
     .scroll-progress {
       position:fixed; top:0; right:0;
@@ -935,14 +935,14 @@ background:
       transition:width 0.1s;
       width:0%;
     }
-
+ 
     /* ===================== ANIMATIONS ===================== */
     .fade-up {
       opacity:0; transform:translateY(30px);
       transition:opacity 0.6s var(--ease), transform 0.6s var(--ease);
     }
     .fade-up.visible { opacity:1; transform:translateY(0); }
-
+ 
     /* ===================== RESPONSIVE ===================== */
     @media(max-width:1024px) {
       .footer-top { grid-template-columns:1fr 1fr; }
@@ -955,17 +955,18 @@ background:
       .about-badge { display:none; }
       /* Modal: stack vertically on tablet */
       .modal-box {
-        grid-template-columns:1fr;
-        max-height:92vh;
-        overflow-y:auto;
+        display:flex;
+        flex-direction:column;
+        max-height:90vh;
+        overflow:hidden;
         border-radius:var(--radius-lg);
       }
-      .modal-img-side {height: 600px; }
-      .modal-info-side { padding:24px; max-height:none; }
+      .modal-img-side { height:280px; min-height:280px; flex-shrink:0; overflow:hidden; }
+      .modal-info-side { padding:24px; flex:1; overflow-y:auto; max-height:none; }
       .modal-name { font-size:20px; }
       .modal-price { font-size:28px; }
     }
-
+ 
     @media(max-width:768px) {
       nav { display:none; }
       /* Header: اختصر مربع البحث */
@@ -991,16 +992,17 @@ background:
         padding:0;
       }
       .modal-box {
+        display:flex;
+        flex-direction:column;
         border-radius:var(--radius-xl) var(--radius-xl) 0 0;
         max-height:92vh;
-        overflow-y:auto;
+        overflow:hidden;
         width:100%;
         max-width:100%;
       }
-      .modal-img-side {height: 600px;  }
-
+      .modal-img-side { height:220px; min-height:220px; flex-shrink:0; overflow:hidden; }
       .modal-img-side img { object-position:center top; }
-      .modal-info-side { padding:20px 20px 32px; }
+      .modal-info-side { padding:20px 20px 32px; flex:1; overflow-y:auto; }
       .modal-name { font-size:18px; margin-bottom:10px; }
       .modal-price { font-size:26px; }
       .modal-desc { font-size:14px; margin-bottom:16px; }
@@ -1010,7 +1012,7 @@ background:
       .hero-ctas { flex-direction:column; }
       .btn-gold, .btn-outline-white { width:100%; justify-content:center; }
     }
-
+ 
     @media(max-width:480px) {
       .header-content { padding:0 12px; height:58px; }
       /* إخفاء صندوق البحث في الهيدر واستبداله بأيقونة */
@@ -1035,8 +1037,8 @@ background:
       /* Categories: تصغير الـ pills */
       .cat-pill { padding:10px 14px; font-size:13px; }
       /* Modal */
-      .modal-img-side {height: 600px;margin-bottom: -545px;}
-      .modal-info-side { padding:16px 16px 28px; }
+      .modal-img-side { height:180px; min-height:180px; flex-shrink:0; overflow:hidden; }
+      .modal-info-side { padding:16px 16px 28px; flex:1; overflow-y:auto; }
       .modal-name { font-size:16px; }
       .modal-price { font-size:22px; }
       /* Notification */
@@ -1046,8 +1048,4 @@ background:
       .back-top { bottom:20px; right:16px; width:42px; height:42px; }
       /* Footer */
       .footer-bottom-links { flex-wrap:wrap; justify-content:center; gap:12px; }
-      /* Cta section */
-      .contact-cta { border-radius:var(--radius-lg); }
-      .cta-text h2 { font-size:22px; }
     }
-  
